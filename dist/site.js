@@ -37,7 +37,7 @@ if(!reduced&&window.gsap){
  gsap.from('.hero-portrait',{y:35,opacity:0,duration:1.4,ease:'power3.out'});
  gsap.from('.hero-intro,.hero-label,.hero-index,.hero-signature',{y:20,opacity:0,duration:1,stagger:.1,delay:.4,ease:'power3.out'});
  const timeline=gsap.timeline({scrollTrigger:{trigger:'.hero-scroll',start:'top top',end:()=>'+='+innerHeight*1.3,pin:'.hero',scrub:1,anticipatePin:1,invalidateOnRefresh:true,onUpdate:self=>{window.MGL_MOTION.heroProgress=self.progress;document.querySelectorAll('.hero-index,.scroll-note').forEach(a=>{a.inert=self.progress>.35;});}}});
- timeline.to('.portrait-move',{scale:1.07,yPercent:3,duration:.45,ease:'none'},0)
+ timeline.to('.portrait-move',{scale:1.035,yPercent:0,duration:.45,ease:'none'},0)
  .to('.hero-intro,.hero-label,.hero-index,.hero-signature,.scroll-note',{opacity:0,y:-25,duration:.22},.15)
  .to('.hero-wipe',{clipPath:'circle(150% at 50% 72%)',duration:.5,ease:'power2.inOut'},.4)
  .fromTo('.wipe-title',{y:90,opacity:0,scale:.95},{y:0,opacity:1,scale:1,duration:.3,ease:'power2.out'},.62)
@@ -51,9 +51,4 @@ if(!reduced&&window.gsap){
  $$('details').forEach(el=>el.addEventListener('toggle',()=>ScrollTrigger.refresh()));
  document.fonts.ready.then(()=>ScrollTrigger.refresh());window.addEventListener('load',()=>ScrollTrigger.refresh());
 }
-// Quiet topographic field, drawn at capped device resolution. Suspended when offscreen.
-const canvas=$('#field-canvas'),ctx=canvas.getContext('2d');let cw=0,ch=0,visible=true,last=0;
-function resizeField(){const d=Math.min(devicePixelRatio,1.5);cw=hero.clientWidth;ch=hero.clientHeight;canvas.width=cw*d;canvas.height=ch*d;ctx.setTransform(d,0,0,d,0,0);drawField(0);}
-function drawField(time){ctx.clearRect(0,0,cw,ch);ctx.strokeStyle='#c6c9bd';ctx.lineWidth=.65;ctx.globalAlpha=.52;const drift=reduced?0:time*.000065;const pointer=window.MGL_MOTION.pointer;for(let k=0;k<13;k++){ctx.beginPath();for(let i=0;i<=170;i++){const a=i/170*Math.PI*2,r=180+k*110;const wave=Math.sin(a*3+drift)*45+Math.cos(a*5-drift*.8)*20;const x=cw*.51+(r+wave)*Math.cos(a)*1.55+pointer.x*9;const y=ch*.5+(r+wave)*Math.sin(a)*.72+pointer.y*9;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.stroke();}}
-new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;}).observe(hero);resizeField();window.addEventListener('resize',resizeField);function loop(t){if(visible&&!reduced&&t-last>40){drawField(t);last=t;}requestAnimationFrame(loop);}if(!reduced)requestAnimationFrame(loop);
 })();

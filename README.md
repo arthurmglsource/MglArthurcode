@@ -1,6 +1,6 @@
 # MGL Growth — Be Found
 
-Site estático completo, com retrato central, animação de scroll, portefólio interativo e apresentação da MGL Presence.
+Site estático completo, com o banner aprovado pelo utilizador, retrato central e animação de scroll, portefólio interativo e apresentação da MGL Presence.
 
 ## Editar
 
@@ -8,7 +8,7 @@ Site estático completo, com retrato central, animação de scroll, portefólio 
 - `dist/index.html`: textos e estrutura das secções.
 - `dist/styles.css`: composição, cores e responsive.
 - `dist/site.js`: scroll, galeria, menu, preços e diálogos.
-- `dist/scene.js`: estrutura tridimensional discreta da hero.
+- `dist/scene.js`: experiência WebGL anterior, conservada mas já não carregada pela página.
 - `dist/style-tile.html`: quadro de identidade visual usando os estilos reais.
 
 Em `content.js`, preencher `whatsappNumber` com os dígitos do número internacional e `meetingUrl` com o URL de agendamento. Até lá, os botões mostram uma mensagem explícita de prévia, sem simular envio ou reserva. Substituir os objetos `projects` pelos casos reais; atualizar os rótulos e declarações de conceito apenas quando os trabalhos forem reais e autorizados.
@@ -17,11 +17,11 @@ Para visualizar, servir `dist` por HTTP, por exemplo `python3 -m http.server 417
 
 ## Direção e história visual
 
-Rosto de Arthur centrado e dominante, preto e branco, informação nas margens. Sem fotografia fictícia de Lisboa. Contraste entre o primeiro ecrã claro, manifesto escuro e arquivo editorial claro. DM Sans + Instrument Serif, servidas localmente.
+Rosto de Arthur centrado e dominante, banner a cores fornecido pelo utilizador, informação nas margens. Sem fotografia fictícia de Lisboa. Contraste entre o primeiro ecrã claro, manifesto escuro e arquivo editorial claro. DM Sans + Instrument Serif, servidas localmente.
 
 | Scene | Visual story | Website copy |
 | --- | --- | --- |
-| 01 — Presença humana | Retrato grande, centrado, com contornos discretos e estrutura tridimensional atrás do rosto. | Presença digital. Negócios reais. |
+| 01 — Presença humana | Retrato grande, centrado, com os contornos e o wireframe presentes na imagem aprovada. | Presença digital. Negócios reais. |
 | 02 — Transição | A informação lateral sai; uma expansão circular escura ocupa o ecrã e revela a frase. | BE FOUND. |
 | 03 — O motivo | Tipografia monumental revela a necessidade de estar presente durante a pesquisa. | Seus clientes já estão procurando. Faça com que encontrem você. |
 | 04 — Exploração | Mosaico desloca-se suavemente com o rato; hover recupera cor; clique abre o estudo. | Ideias que ganham presença. |
@@ -37,7 +37,7 @@ As animações, geometrias e código da MGL são próprios. Não foram copiados 
 
 ## Assets e proveniência
 
-- Hero: edição gerada pelo image_gen integrado do ChatGPT a partir das fotografias de Arthur, com instrução para preservar identidade. Original RGB conservado no pacote de fontes; recorte aplicado por SVG no browser. Não existe alpha verdadeiro no bitmap.
+- Hero atual: banner fornecido pelo utilizador em 17/09/2026 (1708 × 921), convertido para WebP sem alterar o conteúdo. O capacete e as linhas fazem parte da imagem enviada. Sem recorte SVG, filtro monocromático ou sobreposição adicional de WebGL. No desktop, enquadramento central em ecrã completo; no mobile e tablet vertical, imagem a 90% da altura, alinhada à base, com rosto central e navegação no topo.
 - Sobre: fotografia pessoal original fornecida (Arthur de óculos ao ar livre), convertida para WebP e tratada em preto e branco por CSS.
 - Super Bock, A Padaria Portuguesa e Millennium bcp: estudos visuais gerados a pedido do utilizador, identificados como conceitos não comissionados. Não são clientes, resultados ou campanhas reais da MGL. Prompts e PNGs originais incluídos no pacote de fontes.
 - Logotipo: master SVG tipográfico editável; fontes entregues. A marca é MGL, com Arthur como fundador.
@@ -53,7 +53,7 @@ As animações, geometrias e código da MGL são próprios. Não foram copiados 
 - Alternância €89 / R$497 e diálogos de contacto honestos.
 - Preferência de movimento reduzido: sem pinning e sem scroll suave.
 - Sem erros JavaScript observados nos fluxos testados. Teste em Chromium; Safari e dispositivos físicos ainda não verificados.
-- Densidade de canvas limitada a 1,5×; renderização de WebGL pausada fora da hero; fallback de retrato se WebGL não estiver disponível.
+- A hero atual não depende de WebGL; o banner permanece visível sem esse recurso. Scroll de ida e volta e menu móvel verificados após a troca. Verificados também 360×740, 768×1024 e 2560×1080.
 
 ## Pendências
 
