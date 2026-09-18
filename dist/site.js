@@ -6,6 +6,26 @@ let lenis=null, menuOpen=false;
 if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);}
 if(window.Lenis&&!reduced){lenis=new Lenis({duration:1.08,smoothWheel:true,touchMultiplier:1});lenis.on('scroll',()=>window.ScrollTrigger?.update());gsap.ticker.add(time=>lenis.raf(time*1000));gsap.ticker.lagSmoothing(0);}
 window.MGL_MOTION={lenis,reduced,heroProgress:0,pointer:{x:0,y:0}};
+// Service tabs keep the full journey compact and work with keyboard and touch.
+const presenceTabs=$$('.presence-tabs [role="tab"]'), presencePanels=$$('.presence-stage [role="tabpanel"]');
+function selectPresence(index,focus=false){
+ presenceTabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;presencePanels[i].hidden=i!==index;});
+ if(focus)presenceTabs[index].focus();
+ if(!reduced&&window.gsap){gsap.killTweensOf(presencePanels);gsap.fromTo(presencePanels[index],{opacity:0,y:14},{opacity:1,y:0,duration:.45,ease:'power3.out',clearProps:'transform,opacity'});}
+}
+presenceTabs.forEach((tab,i)=>{
+ tab.addEventListener('click',()=>selectPresence(i));
+ tab.addEventListener('keydown',event=>{
+  let next=i;
+  if(['ArrowDown','ArrowRight'].includes(event.key))next=(i+1)%presenceTabs.length;
+  else if(['ArrowUp','ArrowLeft'].includes(event.key))next=(i+presenceTabs.length-1)%presenceTabs.length;
+  else if(event.key==='Home')next=0;
+  else if(event.key==='End')next=presenceTabs.length-1;
+  else return;
+  event.preventDefault();selectPresence(next,true);
+ });
+});
+if(!reduced&&window.gsap)gsap.from('.presence-intro,.presence-experience,.presence-bottom',{y:28,opacity:0,duration:.8,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.presence',start:'top 78%',once:true}});
 function lock(on){document.body.classList.toggle('modal-open',on);if(lenis)on?lenis.stop():lenis.start();}
 const menu=$('#site-menu'),toggle=$('.menu-toggle');
 function setMenu(open){menuOpen=open;menu.hidden=!open;document.body.classList.toggle('menu-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');if(lenis)open?lenis.stop():lenis.start();if(open){$('.header').style.position='fixed';menu.querySelector('a').focus();}else{$('.header').style.position='absolute';toggle.focus();}}
