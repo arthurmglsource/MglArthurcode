@@ -1,0 +1,33 @@
+.contact.booking{padding:72px 5vw 80px}
+.booking-top{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #45473e;padding-top:22px;margin-bottom:65px}
+.booking-top .eyebrow{font-size:10px;letter-spacing:.12em}
+.booking-layout{display:grid;grid-template-columns:1.25fr 1fr;gap:9%}
+.contact.booking h2{font-size:clamp(55px,6.8vw,110px);line-height:.98;letter-spacing:-.065em;margin:0 0 30px}
+.contact.booking h2 span{color:#b9bdb0}
+.booking-intro>p{font-size:18px;line-height:1.6;max-width:390px;color:#c3c6bb;margin:0 0 20px}
+.booking-intro .booking-promise{font-size:13px;color:#93978b}
+.booking-area{border-left:1px solid #45473e;padding-left:40px;min-width:0}
+.booking-meta{display:flex;gap:22px;font-size:10px;letter-spacing:.09em;color:#c3c6bb;padding-bottom:24px;border-bottom:1px solid #45473e}
+.booking-invite{position:relative;padding:42px 0 27px}
+.booking-mark{position:absolute;right:0;top:30px;font-size:55px;line-height:1;color:#b9bdb0}
+.booking-invite .eyebrow{font-size:9px;letter-spacing:.12em}
+.booking-invite h3{font-size:clamp(28px,2.7vw,40px);line-height:1.12;margin:20px 0 16px;letter-spacing:-.04em}
+.booking-invite p{font-size:14px;line-height:1.6;color:#b9bdb0;max-width:300px;margin:0}
+.booking-action{display:flex;align-items:center;justify-content:space-between;gap:25px;background:#f5f5ef;color:#191a18;padding:22px 24px;font-size:12px;letter-spacing:.07em;text-decoration:none;transition:background .25s}
+.booking-action>span:last-child{font-size:26px;line-height:1;transition:transform .25s}
+.booking-action[href]:hover{background:#e2e4da}
+.booking-action[href]:hover>span:last-child{transform:translate(3px,-3px)}
+.booking-action[aria-disabled=true]{background:#30322c;color:#b9bdb0;cursor:not-allowed;border:1px solid #53574a}
+.booking-action:focus-visible{outline:2px solid #f5f5ef;outline-offset:5px}
+.booking-status{font-size:11px;line-height:1.5;color:#afb3a5;margin:12px 0 28px;max-width:350px}
+.booking-steps{list-style:none;padding:0;margin:0;border-top:1px solid #45473e}
+.booking-steps li{padding:12px 0;border-bottom:1px solid #45473e;font-size:12px;color:#c3c6bb;display:flex;gap:20px}
+.booking-steps li span{font-size:10px;color:#8e9384}
+@media(max-width:700px){
+.contact.booking{padding:46px 20px 50px}.booking-top{margin-bottom:35px}.booking-top .eyebrow{font-size:8px}
+.booking-layout{display:flex;flex-direction:column;gap:25px}.contact.booking h2{font-size:clamp(48px,12vw,74px);margin-bottom:24px}
+.booking-intro>p{font-size:16px;max-width:100%;margin-bottom:12px}.booking-intro .booking-promise{font-size:12px}
+.booking-area{border-left:0;padding-left:0;display:flex;flex-direction:column}.booking-meta{border-top:1px solid #45473e;border-bottom:0;padding:20px 0;gap:25px}
+.booking-invite{display:none}.booking-action{padding:21px 20px}.booking-status{margin-bottom:24px}
+}
+@media(prefers-reduced-motion:reduce){.booking *{transition:none!important}}

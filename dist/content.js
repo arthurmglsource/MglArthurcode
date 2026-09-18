@@ -1,8 +1,12 @@
 /* Substituir contactos e conceitos pelos dados reais e voltar a publicar. */
+// Google Calendar appointment schedule: 30 minutes, Google Meet.
+// In Google's booking form, add Company and WhatsApp alongside name/email.
+// Only this setting needs changing to activate all meeting actions.
+const GOOGLE_BOOKING_URL = "[ADD REAL GOOGLE CALENDAR BOOKING LINK]";
 window.MGL_CONTENT={
  whatsappNumber:'',
  whatsappMessage:'Olá, gostaria de conversar sobre a presença digital do meu negócio.',
- meetingUrl:'',
+ meetingUrl:GOOGLE_BOOKING_URL,
  prices:{PT:'€89',BR:'R$497'},
  projects:[
   {id:'organiza-pj',title:'Organiza PJ',category:'FINANCEIRO & BPO / WEBSITE',image:'assets/project-organiza-pj.webp',description:'Uma presença digital para a Organiza PJ, com uma mensagem direta sobre clareza financeira, controlo e crescimento. A composição aproxima as pessoas por trás do negócio e a sua proposta de valor.',scope:'Website',concept:false},

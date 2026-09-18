@@ -25,7 +25,10 @@ presenceTabs.forEach((tab,i)=>{
   event.preventDefault();selectPresence(next,true);
  });
 });
-if(!reduced&&window.gsap)gsap.from('.presence-intro,.presence-experience,.presence-bottom',{y:28,opacity:0,duration:.8,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.presence',start:'top 78%',once:true}});
+if(!reduced&&window.gsap){
+ gsap.from('.presence-intro,.presence-experience,.presence-bottom',{y:28,opacity:0,duration:.8,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.presence',start:'top 78%',once:true}});
+ gsap.from('.booking-area',{y:20,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.booking-area',start:'top 90%',once:true}});
+}
 function lock(on){document.body.classList.toggle('modal-open',on);if(lenis)on?lenis.stop():lenis.start();}
 const menu=$('#site-menu'),toggle=$('.menu-toggle');
 function setMenu(open){menuOpen=open;menu.hidden=!open;document.body.classList.toggle('menu-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');if(lenis)open?lenis.stop():lenis.start();if(open){$('.header').style.position='fixed';menu.querySelector('a').focus();}else{$('.header').style.position='absolute';toggle.focus();}}
@@ -45,8 +48,18 @@ $$('dialog').forEach(dialog=>{dialog.setAttribute('data-lenis-prevent','');dialo
 $('.project-cta').addEventListener('click',()=>{projectDialog.close();if(lenis)lenis.scrollTo('#contact');else $('#contact').scrollIntoView({behavior:'smooth'});});
 $$('[data-view]').forEach(b=>b.addEventListener('click',()=>{const showIndex=b.dataset.view==='index';$('.gallery-stage').hidden=showIndex;index.hidden=!showIndex;$$('[data-view]').forEach(el=>el.setAttribute('aria-pressed',String(el===b)));window.ScrollTrigger?.refresh();}));
 $$('[data-country]').forEach(b=>b.addEventListener('click',()=>{$('#price-amount').textContent=data.prices[b.dataset.country];$$('[data-country]').forEach(el=>el.setAttribute('aria-pressed',String(el===b)));}));
-$$('[data-contact]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.contact==='whatsapp'&&data.whatsappNumber){window.open('https://wa.me/'+data.whatsappNumber.replace(/\D/g,'')+'?text='+encodeURIComponent(data.whatsappMessage),'_blank','noopener');return;}if(b.dataset.contact==='meeting'&&data.meetingUrl){window.open(data.meetingUrl,'_blank','noopener');return;}$('#contact-dialog-description').textContent=b.dataset.contact==='whatsapp'?'O WhatsApp estará disponível assim que o número de contacto da MGL for adicionado. Esta é uma prévia do site; nenhuma mensagem foi enviada.':'O agendamento estará disponível assim que o link de reuniões da MGL for adicionado. Esta é uma prévia do site; nenhuma reunião foi marcada.';contactDialog.showModal();lock(true);}));$('.dialog-dismiss').addEventListener('click',()=>contactDialog.close());$('#year').textContent=new Date().getFullYear();
-if(data.whatsappNumber&&data.meetingUrl)$('.contact-pending').hidden=true;
+function validGoogleBookingUrl(value){
+ try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&((u.hostname==='calendar.google.com'&&u.pathname.startsWith('/calendar/appointments/'))||(u.hostname==='calendar.app.google'&&u.pathname.length>1))?u.href:null;}catch{return null;}
+}
+const bookingUrl=validGoogleBookingUrl(data.meetingUrl), bookingAction=$('#google-booking-action');
+if(bookingUrl){bookingAction.href=bookingUrl;bookingAction.target='_blank';bookingAction.rel='noopener noreferrer';bookingAction.removeAttribute('aria-disabled');$('#booking-status').textContent='Consulte os horários reais no Google Calendar. Abre numa nova aba.';}
+else{bookingAction.tabIndex=0;bookingAction.addEventListener('click',e=>e.preventDefault());}
+$$('[data-contact]').forEach(b=>b.addEventListener('click',()=>{
+ if(b.dataset.contact==='meeting'){if(lenis)lenis.scrollTo('#contact');else $('#contact').scrollIntoView({behavior:reduced?'auto':'smooth'});return;}
+ if(data.whatsappNumber){window.open('https://wa.me/'+data.whatsappNumber.replace(/\D/g,'')+'?text='+encodeURIComponent(data.whatsappMessage),'_blank','noopener');return;}
+ $('#contact-dialog-description').textContent='O WhatsApp estará disponível assim que o número de contacto da MGL for adicionado. Esta é uma prévia do site; nenhuma mensagem foi enviada.';contactDialog.showModal();lock(true);
+}));
+$('.dialog-dismiss').addEventListener('click',()=>contactDialog.close());$('#year').textContent=new Date().getFullYear();
 const stage=$('.gallery-stage'),cursor=$('.gallery-cursor'),active=$('#gallery-active');
 let gx=0,gy=0,gTargetX=0,gTargetY=0;
 const fine=matchMedia('(hover:hover) and (pointer:fine)');
