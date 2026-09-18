@@ -48,7 +48,7 @@ if(!reduced&&window.gsap){
  gsap.from('.manifesto h2>span',{opacity:.18,y:45,stagger:.15,ease:'none',scrollTrigger:{trigger:'.manifesto',start:'top 70%',end:'center 45%',scrub:1}});
  gsap.from('.gallery-map .project-tile',{opacity:0,y:45,stagger:.025,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.work',start:'top 80%',once:true}});
  $$('.section-heading,.pricing-title,.price-panel,.process li,.about-text,.contact h2').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
- gsap.fromTo('.about-photo img',{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:'.about-photo',start:'top bottom',end:'bottom top',scrub:true}});
+ if($('.about-photo')) gsap.fromTo('.about-photo img',{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:'.about-photo',start:'top bottom',end:'bottom top',scrub:true}});
  const tick=()=>{if(fine.matches){gx+=(gTargetX-gx)*.055;gy+=(gTargetY-gy)*.055;map.style.transform=`translate3d(${gx}px,${gy}px,0)`;}};gsap.ticker.add(tick);
  $$('details').forEach(el=>el.addEventListener('toggle',()=>ScrollTrigger.refresh()));
  document.fonts.ready.then(()=>ScrollTrigger.refresh());window.addEventListener('load',()=>ScrollTrigger.refresh());
