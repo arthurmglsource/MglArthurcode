@@ -1,0 +1,54 @@
+/* Shared primary action. Copy and destinations live in the page markup. */
+:root .mgl-cta{
+ box-sizing:border-box;
+ display:inline-flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:clamp(16px,2.2vw,34px);
+ min-height:60px;
+ padding:17px 23px;
+ border:1px solid #1b1b1b;
+ border-radius:8px;
+ background:#1b1b1b;
+ color:#f8f7f3;
+ font:600 12px/1.2 var(--sans);
+ letter-spacing:.045em;
+ text-decoration:none;
+ cursor:pointer;
+ white-space:nowrap;
+ transition:background-color .3s cubic-bezier(.2,.75,.2,1),color .3s cubic-bezier(.2,.75,.2,1),border-color .3s cubic-bezier(.2,.75,.2,1);
+}
+:root .mgl-cta>span:last-child{
+ flex:none;
+ color:currentColor;
+ font-size:23px;
+ line-height:1;
+ transition:transform .3s cubic-bezier(.2,.75,.2,1);
+}
+:root .mgl-cta:hover,
+:root .mgl-cta:focus-visible{
+ background:#f8f7f3;
+ color:#1b1b1b;
+ border-color:#1b1b1b;
+}
+:root .mgl-cta:hover>span:last-child,
+:root .mgl-cta:focus-visible>span:last-child{transform:translate(3px,-3px)}
+:root .mgl-cta:focus-visible{outline:2px solid #595959;outline-offset:4px}
+:root .mgl-cta:active{background:#e4e3df;color:#1b1b1b}
+:root .mgl-cta:disabled,
+:root .mgl-cta[aria-disabled=true]{background:#333;color:#aaa;border-color:#555;cursor:not-allowed}
+:root .mgl-cta:disabled:hover,
+:root .mgl-cta[aria-disabled=true]:hover{background:#333;color:#aaa;border-color:#555}
+:root .booking-area .mgl-cta[href]{background:#1b1b1b;color:#f8f7f3;border-color:#1b1b1b}
+:root .booking-area .mgl-cta[href]:hover,
+:root .booking-area .mgl-cta[href]:focus-visible{background:#f8f7f3;color:#1b1b1b}
+:root .booking-area .mgl-cta[aria-disabled=true]{background:#333;color:#aaa;border-color:#555}
+:root .lead-submit-row .mgl-cta{font-size:12px}
+@media(max-width:700px){
+ :root .mgl-cta{min-height:52px;padding:14px 17px;font-size:10px;gap:12px}
+ :root .mgl-cta>span:last-child{font-size:19px}
+ :root .lead-submit-row .mgl-cta{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ :root .mgl-cta,:root .mgl-cta>span:last-child{transition:none}
+}
