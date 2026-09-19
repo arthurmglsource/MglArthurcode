@@ -58,3 +58,17 @@ As animações, geometrias e código da MGL são próprios. Não foram copiados 
 ## Pendências
 
 WhatsApp e URL de reuniões ainda precisam dos dados do proprietário. Os três conceitos devem ser substituídos por projetos reais quando estiverem disponíveis. Publicação inicial privada, para revisão do proprietário.
+# Contactos e agendamento
+
+O formulário em #lead guarda nome, empresa, telefone e email na tabela privada
+leads (D1). Não existe endpoint público para consultar contactos. O proprietário
+pode consultar os registos através das ferramentas de base de dados do Sites.
+Não há envio automático de email nesta versão.
+
+Instagram: editar instagramUrl em dist/content.js.
+Google Calendar: editar GOOGLE_BOOKING_URL no mesmo ficheiro.
+Enquanto não houver links reais, os respetivos controlos indicam indisponibilidade.
+
+O site tem agora um Worker para POST /api/leads e assets em dist/client.
+Build: npm run build. Migrações: npm run db:generate.
+Os ficheiros de design continuam em dist/; client e server são gerados.

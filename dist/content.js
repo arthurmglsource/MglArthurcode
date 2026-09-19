@@ -4,6 +4,7 @@
 // Only this setting needs changing to activate all meeting actions.
 const GOOGLE_BOOKING_URL = "[ADD REAL GOOGLE CALENDAR BOOKING LINK]";
 window.MGL_CONTENT={
+ instagramUrl:'',
  whatsappNumber:'',
  whatsappMessage:'Olá, gostaria de conversar sobre a presença digital do meu negócio.',
  meetingUrl:GOOGLE_BOOKING_URL,
