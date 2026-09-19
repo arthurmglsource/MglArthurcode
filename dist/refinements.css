@@ -30,7 +30,7 @@
 .footer-top a{text-decoration:none;transition:transform .25s}.footer-top a[href]:hover{transform:translateX(5px)}
 .footer-top a[aria-disabled=true]{color:#888}.footer-top>span{font-size:10px;line-height:1.8;letter-spacing:.05em}
 .studio-footer .footer-brand{display:flex;font-size:clamp(100px,29vw,470px);line-height:1.02;letter-spacing:-.075em;overflow:hidden;padding-bottom:.05em}
-.footer-brand>span{display:inline-block;transition:font-weight .4s,color .3s,translate .5s}.footer-brand:hover>span:nth-child(2){translate:0 -6%}.footer-brand:hover>.footer-dot{color:#999;translate:0 -14%}
+.footer-brand>span{display:inline-block}
 .footer-bottom{border-top:1px solid #ccc;padding-top:22px;gap:20px;font-size:10px}
 @media(max-width:800px){
 .lead-section{grid-template-columns:1fr;gap:28px;padding:55px 20px}.lead-heading h2{font-size:48px;margin:24px 0 16px}.lead-fields{gap:25px 18px}.lead-fields input{font-size:17px}.lead-submit-row{align-items:stretch;flex-direction:column;gap:15px}.lead-submit-row p{max-width:100%;margin:0}.lead-submit-row button{justify-content:space-between;font-size:11px}
