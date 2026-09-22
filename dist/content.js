@@ -2,11 +2,13 @@
 // Google Calendar appointment schedule: 30 minutes, Google Meet.
 // In Google's booking form, add Company and WhatsApp alongside name/email.
 // Only this setting needs changing to activate all meeting actions.
-const GOOGLE_BOOKING_URL = "[ADD REAL GOOGLE CALENDAR BOOKING LINK]";
+const GOOGLE_BOOKING_URL = "https://calendar.app.google/1CnJ6tHeD56DbUkd8";
+const WHATSAPP_URL = "https://api.whatsapp.com/send/?phone=5531998517356&text=Ol%C3%A1%21+Vim+pelo+site+e+gostaria+de+entender+melhor+como+voc%C3%AAs+podem+ajudar+o+meu+neg%C3%B3cio+a+ter+mais+presen%C3%A7a+no+Google+e+gerar+mais+contactos&type=phone_number&app_absent=0";
 window.MGL_CONTENT={
- instagramUrl:'',
- whatsappNumber:'',
- whatsappMessage:'Olá, gostaria de conversar sobre a presença digital do meu negócio.',
+ instagramUrl:'https://www.instagram.com/mglgrowth/',
+ whatsappNumber:'5531998517356',
+ whatsappMessage:'Olá! Vim pelo site e gostaria de entender melhor como vocês podem ajudar o meu negócio a ter mais presença no Google e gerar mais contactos',
+ whatsappUrl:WHATSAPP_URL,
  meetingUrl:GOOGLE_BOOKING_URL,
  prices:{PT:'€89',BR:'R$497'},
  projects:[

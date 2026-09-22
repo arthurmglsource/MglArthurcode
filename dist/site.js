@@ -27,7 +27,7 @@ presenceTabs.forEach((tab,i)=>{
 });
 if(!reduced&&window.gsap){
  gsap.from('.presence-intro,.presence-experience,.presence-bottom',{y:28,opacity:0,duration:.8,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.presence',start:'top 78%',once:true}});
- gsap.from('.booking-area',{y:20,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.booking-area',start:'top 90%',once:true}});
+ gsap.from('.booking-intro',{y:20,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.contact.booking',start:'top 85%',once:true}});
 }
 function lock(on){document.body.classList.toggle('modal-open',on);if(lenis)on?lenis.stop():lenis.start();}
 const menu=$('#site-menu'),toggle=$('.menu-toggle');
@@ -46,11 +46,14 @@ function validGoogleBookingUrl(value){
  try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&((u.hostname==='calendar.google.com'&&u.pathname.startsWith('/calendar/appointments/'))||(u.hostname==='calendar.app.google'&&u.pathname.length>1))?u.href:null;}catch{return null;}
 }
 const bookingUrl=validGoogleBookingUrl(data.meetingUrl), bookingAction=$('#google-booking-action');
-if(bookingUrl){bookingAction.href=bookingUrl;bookingAction.target='_blank';bookingAction.rel='noopener noreferrer';bookingAction.removeAttribute('aria-disabled');$('#booking-status').textContent='Consulte os horários reais no Google Calendar. Abre numa nova aba.';}
-else{bookingAction.tabIndex=0;bookingAction.addEventListener('click',e=>e.preventDefault());}
+if(bookingAction){
+ if(bookingUrl){bookingAction.href=bookingUrl;bookingAction.target='_blank';bookingAction.rel='noopener noreferrer';bookingAction.removeAttribute('aria-disabled');}
+ else{bookingAction.tabIndex=0;bookingAction.addEventListener('click',e=>e.preventDefault());}
+}
 $$('[data-contact]').forEach(b=>b.addEventListener('click',()=>{
  if(b.dataset.contact==='meeting'){if(lenis)lenis.scrollTo('#contact');else $('#contact').scrollIntoView({behavior:reduced?'auto':'smooth'});return;}
- if(data.whatsappNumber){window.open('https://wa.me/'+data.whatsappNumber.replace(/\D/g,'')+'?text='+encodeURIComponent(data.whatsappMessage),'_blank','noopener');return;}
+ const targetUrl=data.whatsappUrl||(data.whatsappNumber?'https://api.whatsapp.com/send/?phone='+data.whatsappNumber.replace(/\D/g,'')+'&text='+encodeURIComponent(data.whatsappMessage)+'&type=phone_number&app_absent=0':null);
+ if(targetUrl){window.open(targetUrl,'_blank','noopener,noreferrer');return;}
  $('#contact-dialog-description').textContent='O WhatsApp estará disponível assim que o número de contacto da MGL for adicionado. Esta é uma prévia do site; nenhuma mensagem foi enviada.';contactDialog.showModal();lock(true);
 }));
 $('.dialog-dismiss').addEventListener('click',()=>contactDialog.close());$('#year').textContent=new Date().getFullYear();
@@ -64,10 +67,10 @@ if(matchMedia('(max-width:700px)').matches)$('.gallery-instruction').textContent
 const hero=$('.hero');hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();window.MGL_MOTION.pointer.x=(e.clientX-r.left)/r.width-.5;window.MGL_MOTION.pointer.y=(e.clientY-r.top)/r.height-.5;});hero.addEventListener('pointerleave',()=>{window.MGL_MOTION.pointer.x=0;window.MGL_MOTION.pointer.y=0;});
 if(!reduced&&window.gsap){
  gsap.from('.hero-portrait',{y:35,opacity:0,duration:1.4,ease:'power3.out'});
- gsap.from('.hero-intro,.hero-label,.hero-index,.hero-signature',{y:20,opacity:0,duration:1,stagger:.1,delay:.4,ease:'power3.out'});
+ gsap.from('.hero-intro,.hero-index',{y:20,opacity:0,duration:1,stagger:.1,delay:.4,ease:'power3.out'});
  const timeline=gsap.timeline({scrollTrigger:{trigger:'.hero-scroll',start:'top top',end:()=>'+='+innerHeight*1.3,pin:'.hero',scrub:1,anticipatePin:1,invalidateOnRefresh:true,onUpdate:self=>{window.MGL_MOTION.heroProgress=self.progress;document.querySelectorAll('.hero-index,.scroll-note').forEach(a=>{a.inert=self.progress>.35;});}}});
  timeline.to('.portrait-move',{scale:1.035,yPercent:0,duration:.45,ease:'none'},0)
- .to('.hero-intro,.hero-label,.hero-index,.hero-signature,.scroll-note',{opacity:0,y:-25,duration:.22},.15)
+ .to('.hero-intro,.hero-index,.scroll-note',{opacity:0,y:-25,duration:.22},.15)
  .to('.hero-wipe',{clipPath:'circle(150% at 50% 72%)',duration:.5,ease:'power2.inOut'},.4)
  .fromTo('.wipe-title',{y:90,opacity:0,scale:.95},{y:0,opacity:1,scale:1,duration:.3,ease:'power2.out'},.62)
  .fromTo('.wipe-kicker',{opacity:0,y:12},{opacity:1,y:0,duration:.2},.8)

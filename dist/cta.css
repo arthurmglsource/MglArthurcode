@@ -7,10 +7,10 @@
  gap:clamp(16px,2.2vw,34px);
  min-height:60px;
  padding:17px 23px;
- border:1px solid #1b1b1b;
+ border:1px solid #141414;
  border-radius:8px;
- background:#1b1b1b;
- color:#f8f7f3;
+ background:#141414;
+ color:#ffffff;
  font:600 12px/1.2 var(--sans);
  letter-spacing:.045em;
  text-decoration:none;
@@ -27,21 +27,21 @@
 }
 :root .mgl-cta:hover,
 :root .mgl-cta:focus-visible{
- background:#f8f7f3;
- color:#1b1b1b;
- border-color:#1b1b1b;
+ background:#ffffff;
+ color:#141414;
+ border-color:#141414;
 }
 :root .mgl-cta:hover>span:last-child,
 :root .mgl-cta:focus-visible>span:last-child{transform:translate(3px,-3px)}
 :root .mgl-cta:focus-visible{outline:2px solid #595959;outline-offset:4px}
-:root .mgl-cta:active{background:#e4e3df;color:#1b1b1b}
+:root .mgl-cta:active{background:#e5e5e5;color:#141414}
 :root .mgl-cta:disabled,
 :root .mgl-cta[aria-disabled=true]{background:#333;color:#aaa;border-color:#555;cursor:not-allowed}
 :root .mgl-cta:disabled:hover,
 :root .mgl-cta[aria-disabled=true]:hover{background:#333;color:#aaa;border-color:#555}
-:root .booking-area .mgl-cta[href]{background:#1b1b1b;color:#f8f7f3;border-color:#1b1b1b}
+:root .booking-area .mgl-cta[href]{background:#141414;color:#ffffff;border-color:#141414}
 :root .booking-area .mgl-cta[href]:hover,
-:root .booking-area .mgl-cta[href]:focus-visible{background:#f8f7f3;color:#1b1b1b}
+:root .booking-area .mgl-cta[href]:focus-visible{background:#ffffff;color:#141414}
 :root .booking-area .mgl-cta[aria-disabled=true]{background:#333;color:#aaa;border-color:#555}
 :root .lead-submit-row .mgl-cta{font-size:12px}
 @media(max-width:700px){

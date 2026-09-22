@@ -1,33 +1,186 @@
-.contact.booking{padding:72px 5vw 80px}
-.booking-top{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #45473e;padding-top:22px;margin-bottom:65px}
-.booking-top .eyebrow{font-size:10px;letter-spacing:.12em}
-.booking-layout{display:grid;grid-template-columns:1.25fr 1fr;gap:9%}
-.contact.booking h2{font-size:clamp(55px,6.8vw,110px);line-height:.98;letter-spacing:-.065em;margin:0 0 30px}
-.contact.booking h2 span{color:#b9bdb0}
-.booking-intro>p{font-size:18px;line-height:1.6;max-width:390px;color:#c3c6bb;margin:0 0 20px}
-.booking-intro .booking-promise{font-size:13px;color:#93978b}
-.booking-area{border-left:1px solid #45473e;padding-left:40px;min-width:0}
-.booking-meta{display:flex;gap:22px;font-size:10px;letter-spacing:.09em;color:#c3c6bb;padding-bottom:24px;border-bottom:1px solid #45473e}
-.booking-invite{position:relative;padding:42px 0 27px}
-.booking-mark{position:absolute;right:0;top:30px;font-size:55px;line-height:1;color:#b9bdb0}
-.booking-invite .eyebrow{font-size:9px;letter-spacing:.12em}
-.booking-invite h3{font-size:clamp(28px,2.7vw,40px);line-height:1.12;margin:20px 0 16px;letter-spacing:-.04em}
-.booking-invite p{font-size:14px;line-height:1.6;color:#b9bdb0;max-width:300px;margin:0}
-.booking-action{display:flex;align-items:center;justify-content:space-between;gap:25px;background:#f5f5ef;color:#191a18;padding:22px 24px;font-size:12px;letter-spacing:.07em;text-decoration:none;transition:background .25s}
-.booking-action>span:last-child{font-size:26px;line-height:1;transition:transform .25s}
-.booking-action[href]:hover{background:#e2e4da}
-.booking-action[href]:hover>span:last-child{transform:translate(3px,-3px)}
-.booking-action[aria-disabled=true]{background:#30322c;color:#b9bdb0;cursor:not-allowed;border:1px solid #53574a}
-.booking-action:focus-visible{outline:2px solid #f5f5ef;outline-offset:5px}
-.booking-status{font-size:11px;line-height:1.5;color:#afb3a5;margin:12px 0 28px;max-width:350px}
-.booking-steps{list-style:none;padding:0;margin:0;border-top:1px solid #45473e}
-.booking-steps li{padding:12px 0;border-bottom:1px solid #45473e;font-size:12px;color:#c3c6bb;display:flex;gap:20px}
-.booking-steps li span{font-size:10px;color:#8e9384}
-@media(max-width:700px){
-.contact.booking{padding:46px 20px 50px}.booking-top{margin-bottom:35px}.booking-top .eyebrow{font-size:8px}
-.booking-layout{display:flex;flex-direction:column;gap:25px}.contact.booking h2{font-size:clamp(48px,12vw,74px);margin-bottom:24px}
-.booking-intro>p{font-size:16px;max-width:100%;margin-bottom:12px}.booking-intro .booking-promise{font-size:12px}
-.booking-area{border-left:0;padding-left:0;display:flex;flex-direction:column}.booking-meta{border-top:1px solid #45473e;border-bottom:0;padding:20px 0;gap:25px}
-.booking-invite{display:none}.booking-action{padding:21px 20px}.booking-status{margin-bottom:24px}
+/* MGL Growth — Booking Section Refinement */
+
+.contact.booking {
+  padding: clamp(56px, 6.5vw, 84px) clamp(20px, 5vw, 72px);
+  background: var(--ink, #141414);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
 }
-@media(prefers-reduced-motion:reduce){.booking *{transition:none!important}}
+
+.booking-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #2e2e2e;
+  padding-top: 20px;
+  margin-bottom: clamp(36px, 4vw, 56px);
+  box-sizing: border-box;
+}
+
+.booking-top .eyebrow {
+  font-size: 10px;
+  letter-spacing: .12em;
+  color: #8e8e8e;
+  text-transform: uppercase;
+}
+
+/* 2-column Desktop Layout */
+.booking-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(360px, 780px);
+  gap: clamp(36px, 5vw, 68px);
+  align-items: start;
+  width: 100%;
+  max-width: 1540px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.booking-intro {
+  min-width: 0;
+}
+
+.contact.booking h2 {
+  font-size: clamp(46px, 5.8vw, 102px);
+  line-height: .98;
+  letter-spacing: -.06em;
+  margin: 0 0 26px;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.contact.booking h2 span {
+  color: #a3a3a3;
+}
+
+.booking-intro > p {
+  font-size: clamp(16px, 1.15vw, 18px);
+  line-height: 1.6;
+  max-width: 400px;
+  color: #a3a3a3;
+  margin: 0 0 18px;
+}
+
+.booking-intro .booking-promise {
+  font-size: 13px;
+  color: #737373;
+  letter-spacing: .02em;
+  margin: 0;
+}
+
+/* Booking Shell (Container for Google Calendar Embed) */
+.booking-area {
+  width: 100%;
+  max-width: 780px;
+  height: 720px;
+  max-height: 740px;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.26);
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  transform: none !important;
+}
+
+/* Embedded Google Calendar Iframe */
+.booking-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Tablet & Intermediate Viewports (1024px, 860px) */
+@media (max-width: 1024px) {
+  .booking-layout {
+    grid-template-columns: minmax(260px, 1fr) minmax(340px, 620px);
+    gap: 36px;
+  }
+  .booking-area {
+    height: 700px;
+    max-height: 720px;
+  }
+}
+
+/* Mobile Viewports (<= 860px down to 375px) */
+@media (max-width: 860px) {
+  .contact.booking {
+    padding: 44px 20px 48px;
+  }
+
+  .booking-top {
+    margin-bottom: 24px;
+    padding-top: 16px;
+  }
+
+  .booking-top .eyebrow {
+    font-size: 8px;
+  }
+
+  .booking-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+  }
+
+  .contact.booking h2 {
+    font-size: clamp(40px, 11vw, 68px);
+    margin-bottom: 20px;
+    line-height: 1;
+  }
+
+  .booking-intro > p {
+    font-size: 16px;
+    max-width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .booking-intro .booking-promise {
+    font-size: 12px;
+  }
+
+  .booking-area {
+    width: 100%;
+    max-width: 100%;
+    height: 640px;
+    max-height: 660px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact.booking {
+    padding: 38px 16px 42px;
+  }
+
+  .booking-area {
+    height: 620px;
+    max-height: 640px;
+    border-radius: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking * {
+    transition: none !important;
+    transform: none !important;
+  }
+}

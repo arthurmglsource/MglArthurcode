@@ -5,3 +5,8 @@ outputs/
 node_modules/
 dist/client/
 dist/server/
+.env
+.antigravity/
+.vscode/
+bun.lock
+metadata.json
