@@ -1,0 +1,27 @@
+/* The supplied banner stays intact. Repeated side pixels give its lines depth. */
+.hero{--portrait-x:0px;--portrait-y:0px;--lines-x:0px;--lines-y:0px;--ui-x:0px;--ui-y:0px}
+.hero-portrait.hero-banner{object-position:50% 50%;translate:var(--portrait-x) var(--portrait-y)}
+.hero-portrait.hero-lines-image{display:none;translate:var(--lines-x) var(--lines-y);pointer-events:none}
+.hero-intro,.hero-index,.scroll-note{translate:var(--ui-x) var(--ui-y)!important}
+.hero-index{transition:background-color .3s,border-color .3s,box-shadow .3s,translate .3s cubic-bezier(.2,.75,.2,1);--card-lift:0px;translate:var(--ui-x) calc(var(--ui-y) + var(--card-lift))!important}
+.hero-index b{transition:transform .3s cubic-bezier(.2,.75,.2,1)}
+.scroll-note b{animation:heroScrollCue 2.8s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes heroScrollCue{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@media(min-width:1024px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .hero-portrait.hero-banner:not(.hero-lines-image){mask-image:linear-gradient(90deg,transparent 0% 18%,#000 28% 72%,transparent 82% 100%),linear-gradient(transparent 0% 50%,#000 62%);-webkit-mask-composite:source-over;mask-composite:add}
+ .hero-portrait.hero-lines-image{display:block;mask-image:linear-gradient(90deg,#000 0% 18%,transparent 28% 72%,#000 82% 100%),linear-gradient(#000 0% 50%,transparent 62%);-webkit-mask-composite:source-in;mask-composite:intersect}
+ .header .contact-pill:hover{translate:0 -1px;box-shadow:0 3px 9px #0000000b}
+ .header .contact-pill{transition:background-color .3s cubic-bezier(.2,.75,.2,1),color .3s cubic-bezier(.2,.75,.2,1),border-color .3s,translate .3s,box-shadow .3s}
+ .hero-index:hover{--card-lift:-4px;border-color:#141414;box-shadow:0 3px 8px #00000009}
+ .hero-index:hover b{transform:translate(2px,-2px)}
+}
+@media(max-width:1023px),(hover:none),(pointer:coarse){
+ .hero-portrait.hero-banner,.hero-intro,.hero-index,.scroll-note{translate:none!important}
+ .hero-portrait.hero-lines-image{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-portrait.hero-banner,.hero-intro,.hero-index,.scroll-note{translate:none!important}
+ .hero-portrait.hero-lines-image{display:none}
+ .scroll-note b{animation:none}
+ .hero-index,.hero-index b,.header .contact-pill{transition:none}
+}

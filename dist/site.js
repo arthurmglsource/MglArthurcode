@@ -44,10 +44,10 @@ stage.addEventListener('pointermove',e=>{if(!fine.matches||reduced)return;const 
 stage.addEventListener('pointerleave',()=>{gTargetX=gTargetY=0;active.textContent='MGL / PROJETOS SELECIONADOS';});
 $$('.project-tile').forEach(tile=>{tile.addEventListener('pointerenter',()=>{const p=projects.find(p=>p.id===tile.dataset.project);active.textContent=p.title.toUpperCase()+' / '+(p.concept?'CONCEITO':'WEBSITE');});});
 if(matchMedia('(max-width:700px)').matches)$('.gallery-instruction').textContent='Explore os projetos abaixo.';
-const hero=$('.hero');hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();window.MGL_MOTION.pointer.x=(e.clientX-r.left)/r.width-.5;window.MGL_MOTION.pointer.y=(e.clientY-r.top)/r.height-.5;});hero.addEventListener('pointerleave',()=>{window.MGL_MOTION.pointer.x=0;window.MGL_MOTION.pointer.y=0;});
 if(!reduced&&window.gsap){
- gsap.from('.hero-portrait',{y:35,opacity:0,duration:1.4,ease:'power3.out'});
+ gsap.from('.portrait-move',{opacity:0,duration:1.2,ease:'power3.out'});
  gsap.from('.hero-intro,.hero-index',{y:20,opacity:0,duration:1,stagger:.1,delay:.4,ease:'power3.out'});
+ gsap.matchMedia().add('(min-width:1024px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)',()=>{
  const timeline=gsap.timeline({scrollTrigger:{trigger:'.hero-scroll',start:'top top',end:()=>'+='+innerHeight*1.3,pin:'.hero',scrub:1,anticipatePin:1,invalidateOnRefresh:true,onUpdate:self=>{window.MGL_MOTION.heroProgress=self.progress;document.querySelectorAll('.hero-index,.scroll-note').forEach(a=>{a.inert=self.progress>.35;});}}});
  timeline.to('.portrait-move',{scale:1.035,yPercent:0,duration:.45,ease:'none'},0)
  .to('.hero-intro,.hero-index,.scroll-note',{opacity:0,y:-25,duration:.22},.15)
@@ -55,6 +55,8 @@ if(!reduced&&window.gsap){
  .fromTo('.wipe-title',{y:90,opacity:0,scale:.95},{y:0,opacity:1,scale:1,duration:.3,ease:'power2.out'},.62)
  .fromTo('.wipe-kicker',{opacity:0,y:12},{opacity:1,y:0,duration:.2},.8)
  .to({},{duration:.18});
+ return ()=>{window.MGL_MOTION.heroProgress=0;document.querySelectorAll('.hero-index,.scroll-note').forEach(a=>{a.inert=false;});};
+ });
  gsap.from('.manifesto h2>span',{opacity:.18,y:45,stagger:.15,ease:'none',scrollTrigger:{trigger:'.manifesto',start:'top 70%',end:'center 45%',scrub:1}});
  gsap.from('.gallery-map .project-tile',{opacity:0,y:45,stagger:.025,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.work',start:'top 80%',once:true}});
  $$('.section-heading,.pricing-title,.price-panel,.process li,.about-text,.contact h2').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
