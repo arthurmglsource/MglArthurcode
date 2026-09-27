@@ -10,10 +10,10 @@
    const response=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(15000)});
    const result=await response.json();
    if(!response.ok||result.ok!==true)throw Error(result.error||'Não foi possível enviar. Tente novamente.');
-   feedback.innerHTML='PEDIDO RECEBIDO. Obrigado — o Arthur entrará em contacto consigo. <a href="'+(window.MGL_CONTENT.whatsappUrl||'#')+'" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;margin-left:6px;display:inline-block">Iniciar conversa no WhatsApp ↗</a>';
+   feedback.innerHTML='PEDIDO RECEBIDO. O Arthur entrará em contacto consigo. <a href="'+(window.MGL_CONTENT.whatsappUrl||'#')+'" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;margin-left:6px;display:inline-block">Conversar no WhatsApp ↗</a>';
    form.reset();requestId=crypto.randomUUID();
   }catch(error){feedback.textContent=error.name==='TimeoutError'?'A ligação demorou mais do que o esperado. Tente novamente; os seus dados continuam preenchidos.':error.message==='Failed to fetch'?'Não foi possível ligar. Verifique a ligação e tente novamente.':error.message;}
-  finally{busy=false;button.disabled=false;button.innerHTML='QUERO SER CONTACTADO <span>↗</span>';}
+  finally{busy=false;button.disabled=false;button.innerHTML='VAMOS CONVERSAR <span>↗</span>';}
  });
  const ig=document.querySelector('#footer-instagram');
  try{const u=new URL(window.MGL_CONTENT.instagramUrl);if(u.protocol==='https:'&&['instagram.com','www.instagram.com'].includes(u.hostname)){ig.href=u.href;ig.target='_blank';ig.rel='noopener noreferrer';ig.removeAttribute('aria-disabled');}}catch{}
