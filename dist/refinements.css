@@ -37,6 +37,3 @@
 }
 @media(max-width:360px){.lead-fields{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.lead-section *,.studio-footer *,.booking *{transition:none!important;translate:none!important}}
-.presence-intro h2 span,.presence-intro>div>span,.presence-tabs button{color:#737373}
-.presence-tabs button[aria-selected=true]{color:#141414;background:#e5e5e5}
-.presence-stage{background:#181818}.presence-panel-copy p,.presence-panel-top{color:#a3a3a3}
