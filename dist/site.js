@@ -15,21 +15,6 @@ function setMenu(open){menuOpen=open;menu.hidden=!open;document.body.classList.t
 toggle.addEventListener('click',()=>setMenu(!menuOpen));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menuOpen)setMenu(false);if(e.key==='Tab'&&menuOpen){const els=[toggle,...menu.querySelectorAll('a')];const first=els[0],last=els.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
 $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const target=$(a.getAttribute('href'));if(!target)return;e.preventDefault();if(menuOpen)setMenu(false);if(lenis)lenis.scrollTo(target,{offset:0});else target.scrollIntoView({behavior:reduced?'instant':'smooth'});if(a.classList.contains('skip')){target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}}));
-const projects=data.projects,map=$('#gallery-map');
-// Each official project appears once; the editorial centre stays clear.
-projects.forEach(p=>{
- const tile=document.createElement('div');tile.className='project-tile';tile.dataset.project=p.id;
- tile.style.left=p.position[0]+'%';tile.style.top=p.position[1]+'%';tile.style.setProperty('--tile-width',p.tileWidth+'%');
- const img=document.createElement('img');img.src=p.image.replace('.webp','-thumb.webp');
- img.srcset=p.image.replace('.webp','-thumb.webp')+' 640w, '+p.image+' 1280w';
- img.sizes='(max-width:700px) calc(100vw - 36px), 20vw';
- img.alt=p.title+(p.concept?' — CONCEPT PROJECT':' — screenshot do website');
- img.loading='lazy';img.decoding='async';img.width=1280;img.height=p.imageHeight;
- tile.style.setProperty('--tile-ratio','1280 / '+p.imageHeight);
- const caption=document.createElement('span');caption.className='tile-caption';caption.textContent=p.title+(p.concept?' · CONCEPT PROJECT':'');
- if(p.concept)tile.classList.add('project-concept');
- tile.append(img,caption);map.append(tile);
-});
 const contactDialog=$('#contact-dialog');
 contactDialog.setAttribute('data-lenis-prevent','');contactDialog.querySelector('.dialog-close').addEventListener('click',()=>contactDialog.close());contactDialog.addEventListener('close',()=>lock(false));contactDialog.addEventListener('click',e=>{if(e.target===contactDialog){const r=contactDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)contactDialog.close();}});
 $$('[data-country]').forEach(b=>b.addEventListener('click',()=>{$('#price-amount').textContent=data.prices[b.dataset.country];$$('[data-country]').forEach(el=>el.setAttribute('aria-pressed',String(el===b)));}));
@@ -48,30 +33,22 @@ $$('[data-contact]').forEach(b=>b.addEventListener('click',()=>{
  $('#contact-dialog-description').textContent='O WhatsApp estará disponível assim que o número de contacto da MGL for adicionado. Esta é uma prévia do site; nenhuma mensagem foi enviada.';contactDialog.showModal();lock(true);
 }));
 $('.dialog-dismiss').addEventListener('click',()=>contactDialog.close());$('#year').textContent=new Date().getFullYear();
-const stage=$('.gallery-stage'),active=$('#gallery-active');
-let gx=0,gy=0,gTargetX=0,gTargetY=0;
-const fine=matchMedia('(hover:hover) and (pointer:fine)');
-stage.addEventListener('pointermove',e=>{if(!fine.matches||reduced)return;const r=stage.getBoundingClientRect();gTargetX=-(e.clientX-r.left-r.width/2)*.095;gTargetY=-(e.clientY-r.top-r.height/2)*.12;});
-stage.addEventListener('pointerleave',()=>{gTargetX=gTargetY=0;active.textContent='MGL / PROJETOS SELECIONADOS';});
-$$('.project-tile').forEach(tile=>{tile.addEventListener('pointerenter',()=>{const p=projects.find(p=>p.id===tile.dataset.project);active.textContent=p.title.toUpperCase()+' / '+(p.concept?'CONCEPT PROJECT':'WEBSITE');});});
-if(matchMedia('(max-width:700px)').matches)$('.gallery-instruction').textContent='Explore os projetos abaixo.';
 if(!reduced&&window.gsap){
  gsap.from('.portrait-move',{opacity:0,duration:1.2,ease:'power3.out'});
- gsap.from('.hero-intro,.hero-index',{y:20,opacity:0,duration:1,stagger:.1,delay:.4,ease:'power3.out'});
+ gsap.from('.hero-intro',{y:20,opacity:0,duration:1,stagger:.1,delay:.4,ease:'power3.out'});
  gsap.matchMedia().add('(min-width:1024px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)',()=>{
- const timeline=gsap.timeline({scrollTrigger:{trigger:'.hero-scroll',start:'top top',end:()=>'+='+innerHeight*1.3,pin:'.hero',scrub:1,anticipatePin:1,invalidateOnRefresh:true,onUpdate:self=>{window.MGL_MOTION.heroProgress=self.progress;document.querySelectorAll('.hero-index,.scroll-note').forEach(a=>{a.inert=self.progress>.35;});}}});
+ const timeline=gsap.timeline({scrollTrigger:{trigger:'.hero-scroll',start:'top top',end:()=>'+='+innerHeight*1.3,pin:'.hero',scrub:1,anticipatePin:1,invalidateOnRefresh:true,onUpdate:self=>{window.MGL_MOTION.heroProgress=self.progress;document.querySelectorAll('.scroll-note').forEach(a=>{a.inert=self.progress>.35;});}}});
  timeline.to('.portrait-move',{scale:1.035,yPercent:0,duration:.45,ease:'none'},0)
- .to('.hero-intro,.hero-index,.scroll-note',{opacity:0,y:-25,duration:.22},.15)
+ .to('.hero-intro,.scroll-note',{opacity:0,y:-25,duration:.22},.15)
  .to('.hero-wipe',{clipPath:'circle(150% at 50% 72%)',duration:.5,ease:'power2.inOut'},.4)
  .fromTo('.wipe-title',{y:90,opacity:0,scale:.95},{y:0,opacity:1,scale:1,duration:.3,ease:'power2.out'},.62)
  .fromTo('.wipe-kicker',{opacity:0,y:12},{opacity:1,y:0,duration:.2},.8)
  .to({},{duration:.18});
- return ()=>{window.MGL_MOTION.heroProgress=0;document.querySelectorAll('.hero-index,.scroll-note').forEach(a=>{a.inert=false;});};
+ return ()=>{window.MGL_MOTION.heroProgress=0;document.querySelectorAll('.scroll-note').forEach(a=>{a.inert=false;});};
  });
- gsap.from('.gallery-map .project-tile',{opacity:0,y:45,stagger:.025,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.work',start:'top 80%',once:true}});
- $$('.section-heading,.pricing-title,.price-panel,.process li,.about-text,.contact h2').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
+ $$('.section-heading,.pricing-title,.process li,.about-text,.contact h2').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
  if($('.about-photo')) gsap.fromTo('.about-photo img',{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:'.about-photo',start:'top bottom',end:'bottom top',scrub:true}});
- const tick=()=>{if(fine.matches){gx+=(gTargetX-gx)*.055;gy+=(gTargetY-gy)*.055;map.style.transform=`translate3d(${gx}px,${gy}px,0)`;}};gsap.ticker.add(tick);
+
  $$('details').forEach(el=>el.addEventListener('toggle',()=>ScrollTrigger.refresh()));
  document.fonts.ready.then(()=>ScrollTrigger.refresh());window.addEventListener('load',()=>ScrollTrigger.refresh());
 }

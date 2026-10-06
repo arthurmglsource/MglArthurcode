@@ -1,0 +1,6 @@
+/* Static editorial finish. Tiny raster tile; no animation, no input interception. */
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;background:url('assets/editorial-grain.png') repeat;opacity:.026;mix-blend-mode:soft-light}
+.manifesto{background:#111;min-height:0;padding:54px 4.3%;display:block}
+.manifesto h2{margin:0;line-height:1.02}
+@media(max-width:700px){.manifesto{min-height:0;padding:42px 18px}.manifesto h2{font-size:8.1vw;line-height:1.09}}
+@media(forced-colors:active){body::after{display:none}}

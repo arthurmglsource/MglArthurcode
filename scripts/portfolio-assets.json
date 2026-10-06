@@ -1,0 +1,137 @@
+[
+  {
+    "project": "Malu Criare",
+    "source": "MGL_Portfolio_Assets/malu/malu-01-hero.png",
+    "asset": "dist/assets/portfolio/malu-01-hero-story-1280.webp",
+    "size": [
+      2047,
+      1075
+    ]
+  },
+  {
+    "project": "Malu Criare",
+    "source": "MGL_Portfolio_Assets/malu/malu-02-concept-criativo.png",
+    "asset": "dist/assets/portfolio/malu-02-concept-criativo-story-1280.webp",
+    "size": [
+      2047,
+      1075
+    ]
+  },
+  {
+    "project": "Malu Criare",
+    "source": "MGL_Portfolio_Assets/malu/malu-03-cta-footer.png",
+    "asset": "dist/assets/portfolio/malu-03-cta-footer-story-1280.webp",
+    "size": [
+      2047,
+      1079
+    ]
+  },
+  {
+    "project": "Jonaas",
+    "source": "MGL_Portfolio_Assets/jonaas/jonaas-01-hero.png",
+    "asset": "dist/assets/portfolio/jonaas-01-hero-story-1280.webp",
+    "size": [
+      2047,
+      1081
+    ]
+  },
+  {
+    "project": "Jonaas",
+    "source": "MGL_Portfolio_Assets/jonaas/jonaas-02-musica-player.png",
+    "asset": "dist/assets/portfolio/jonaas-02-musica-player-story-1280.webp",
+    "size": [
+      2047,
+      1067
+    ]
+  },
+  {
+    "project": "Jonaas",
+    "source": "MGL_Portfolio_Assets/jonaas/jonaas-03-editorial-pb.png",
+    "asset": "dist/assets/portfolio/jonaas-03-editorial-pb-story-1280.webp",
+    "size": [
+      2047,
+      1067
+    ]
+  },
+  {
+    "project": "Organiza PJ",
+    "source": "MGL_Portfolio_Assets/organiza-pj/organiza-pj-01-hero.png",
+    "asset": "dist/assets/portfolio/organiza-pj-01-hero-story-1280.webp",
+    "size": [
+      2047,
+      1074
+    ]
+  },
+  {
+    "project": "Vinicius Figueiredo",
+    "source": "MGL_Portfolio_Assets/vinicius/vinicius-01-hero.png",
+    "asset": "dist/assets/portfolio/vinicius-01-hero-story-1280.webp",
+    "size": [
+      2047,
+      1083
+    ]
+  },
+  {
+    "project": "Vinicius Figueiredo",
+    "source": "MGL_Portfolio_Assets/vinicius/vinicius-02-especialidades.png",
+    "asset": "dist/assets/portfolio/vinicius-02-especialidades-story-1280.webp",
+    "size": [
+      2047,
+      1086
+    ]
+  },
+  {
+    "project": "Vinicius Figueiredo",
+    "source": "MGL_Portfolio_Assets/vinicius/vinicius-03-metodo.png",
+    "asset": "dist/assets/portfolio/vinicius-03-metodo-story-1280.webp",
+    "size": [
+      2047,
+      1078
+    ]
+  },
+  {
+    "project": "Madeireira HR",
+    "source": "MGL_Portfolio_Assets/madeireira-hr/madeireira-hr-01-hero-equipe.png",
+    "asset": "dist/assets/portfolio/madeireira-hr-01-hero-equipe-story-1280.webp",
+    "size": [
+      2047,
+      1068
+    ]
+  },
+  {
+    "project": "Madeireira HR",
+    "source": "MGL_Portfolio_Assets/madeireira-hr/madeireira-hr-02-hero-arquitetura.png",
+    "asset": "dist/assets/portfolio/madeireira-hr-02-hero-arquitetura-story-1280.webp",
+    "size": [
+      2047,
+      1075
+    ]
+  },
+  {
+    "project": "Madeireira HR",
+    "source": "MGL_Portfolio_Assets/madeireira-hr/madeireira-hr-03-produtos.png",
+    "asset": "dist/assets/portfolio/madeireira-hr-03-produtos-story-1280.webp",
+    "size": [
+      2047,
+      1072
+    ]
+  },
+  {
+    "project": "Super Bock",
+    "source": "MGL_Portfolio_Assets/super-bock/super-bock-01-hero-concept.png",
+    "asset": "dist/assets/portfolio/super-bock-01-hero-concept-story-1280.webp",
+    "size": [
+      2047,
+      1081
+    ]
+  },
+  {
+    "project": "Super Bock",
+    "source": "MGL_Portfolio_Assets/super-bock/super-bock-02-footer-concept.png",
+    "asset": "dist/assets/portfolio/super-bock-02-footer-concept-story-1280.webp",
+    "size": [
+      2047,
+      1074
+    ]
+  }
+]
