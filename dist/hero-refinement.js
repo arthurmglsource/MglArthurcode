@@ -6,7 +6,6 @@
  const clamp=n=>Math.max(-1,Math.min(1,n));
  function draw(){
   hero.style.setProperty('--portrait-x',(x*5).toFixed(3)+'px');hero.style.setProperty('--portrait-y',(y*5).toFixed(3)+'px');
-  hero.style.setProperty('--lines-x',(-x*8).toFixed(3)+'px');hero.style.setProperty('--lines-y',(-y*8).toFixed(3)+'px');
   hero.style.setProperty('--ui-x',(x*2).toFixed(3)+'px');hero.style.setProperty('--ui-y',(y*2).toFixed(3)+'px');
  }
  function tick(time){
