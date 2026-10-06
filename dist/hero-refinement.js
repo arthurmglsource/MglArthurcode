@@ -29,3 +29,18 @@
  allowed.addEventListener('change',reset);
  const observer=new IntersectionObserver(([entry])=>{if(!entry.isIntersecting)reset();});observer.observe(hero);
 })();
+
+/* A short, unpinned BE FOUND transition immediately after the mobile hero. */
+(()=>{
+ const section=document.querySelector('.mobile-found');
+ if(!section||!window.gsap||!window.ScrollTrigger)return;
+ const media=gsap.matchMedia();
+ media.add('(max-width:1023px) and (prefers-reduced-motion:no-preference)',()=>{
+  const title=section.querySelector('.mobile-found-title');
+  const timeline=gsap.timeline({scrollTrigger:{id:'mgl-mobile-found',trigger:section,start:'top 85%',end:'center 50%',scrub:.45}});
+  timeline.fromTo(title,{opacity:.25,y:28,scale:.96},{opacity:1,y:0,scale:1,duration:1,ease:'none'},0)
+   .fromTo(section.querySelector('.mobile-found-kicker'),{opacity:.3},{opacity:1,duration:.6,ease:'none'},.2);
+ });
+ const dispose=event=>{if(event.persisted)return;media.revert();window.removeEventListener('pagehide',dispose);};
+ window.addEventListener('pagehide',dispose);
+})();
