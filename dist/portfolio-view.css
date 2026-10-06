@@ -12,3 +12,19 @@
 
 /* All supplied prints share the approved floating composition and mobile stack. */
 @media(max-width:700px){#work .project-tile:nth-child(n+8){display:block}}
+
+/* Mobile archive: full project groups, preserving the existing stacked design. */
+@media(max-width:800px){
+ #work{padding:24px 18px}
+ #work .gallery-stage{height:auto;min-height:0;max-height:none;margin:30px 0 25px}
+ #work .gallery-center{position:relative;inset:auto;transform:none;width:100%;padding:15px 0 35px}
+ #work .gallery-center h2{font-size:44px;margin:15px 0}
+ #work .gallery-eyebrow{font-size:7px}
+ #work .gallery-instruction{font-size:12px;margin-top:17px}
+ #work .gallery-map{position:relative;inset:auto;display:flex;flex-direction:column;gap:18px;transform:none!important}
+ #work .project-tile{position:relative!important;left:auto!important;top:auto!important;width:100%;display:block;flex:none;order:var(--mobile-order)}
+ #work .project-tile img{filter:none}
+ #work .project-tile .tile-caption{transform:none;font-size:11px!important;padding:25px 12px 12px}
+ #work .work-foot{font-size:7px;flex-wrap:wrap;gap:15px;line-height:1.5}
+ #work .work-disclosure{font-size:8px;text-align:left;line-height:1.5;margin-top:15px}
+}

@@ -35,11 +35,23 @@
  const section=document.querySelector('.mobile-found');
  if(!section||!window.gsap||!window.ScrollTrigger)return;
  const media=gsap.matchMedia();
- media.add('(max-width:1023px) and (prefers-reduced-motion:no-preference)',()=>{
+ media.add('(min-width:901px) and (max-width:1023px) and (prefers-reduced-motion:no-preference)',()=>{
   const title=section.querySelector('.mobile-found-title');
   const timeline=gsap.timeline({scrollTrigger:{id:'mgl-mobile-found',trigger:section,start:'top 85%',end:'center 50%',scrub:.45}});
   timeline.fromTo(title,{opacity:.25,y:28,scale:.96},{opacity:1,y:0,scale:1,duration:1,ease:'none'},0)
    .fromTo(section.querySelector('.mobile-found-kicker'),{opacity:.3},{opacity:1,duration:.6,ease:'none'},.2);
+ });
+ // Same circle, title rise and progression as desktop, with a shorter mobile pin.
+ media.add('(max-width:900px) and (prefers-reduced-motion:no-preference)',()=>{
+  const hero=document.querySelector('.hero');
+  const timeline=gsap.timeline({scrollTrigger:{id:'mgl-mobile-hero-reveal',trigger:'.hero-scroll',start:'top top',end:()=>'+='+hero.clientHeight*.85,pin:hero,scrub:.35,anticipatePin:1,invalidateOnRefresh:true,onUpdate:self=>{hero.querySelector('.scroll-note').inert=self.progress>.35;}}});
+  timeline.to('.portrait-move',{scale:1.035,yPercent:0,duration:.45,ease:'none'},0)
+   .to('.hero-intro,.scroll-note',{opacity:0,y:-25,duration:.22},.15)
+   .to('.hero-wipe',{clipPath:'circle(150% at 50% 72%)',duration:.5,ease:'power2.inOut'},.4)
+   .fromTo('.wipe-title',{y:90,opacity:0,scale:.95},{y:0,opacity:1,scale:1,duration:.3,ease:'power2.out'},.62)
+   .fromTo('.wipe-kicker',{opacity:0,y:12},{opacity:1,y:0,duration:.2},.8)
+   .to({},{duration:.18});
+  return ()=>{hero.querySelector('.scroll-note').inert=false;};
  });
  const dispose=event=>{if(event.persisted)return;media.revert();window.removeEventListener('pagehide',dispose);};
  window.addEventListener('pagehide',dispose);

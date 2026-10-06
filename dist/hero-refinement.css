@@ -53,3 +53,28 @@
  .hero-studio .hero-portrait.hero-banner,.hero-studio .hero-intro,.hero-studio .scroll-note{translate:none!important}
  .hero-studio .scroll-note b{animation:none}.header .contact-pill{transition:none}
 }
+
+/* Mobile only: first-viewport composition and the desktop circle reveal. */
+@media(max-width:900px){
+ .hero-studio{height:100svh;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr);gap:12px;padding-top:clamp(98px,12svh,138px)}
+ .hero-studio .hero-intro{grid-row:1;position:relative;inset:auto;width:auto;max-width:680px;margin:0 auto;padding:0 6vw;text-align:center}
+ .hero-studio .hero-intro h1{font-size:clamp(27px,7vw,38px);line-height:1.1;margin:0}
+ .hero-studio .hero-mobile-cta{display:none!important}
+ .hero-studio .portrait-move{grid-row:2;position:relative;inset:auto;min-height:0;width:100%;height:calc(100% + clamp(30px,6svh,56px));margin-top:calc(-1 * clamp(30px,6svh,56px));mask-image:linear-gradient(transparent,#000 6%)}
+ .hero-studio .hero-portrait.hero-banner{object-fit:cover;object-position:50% 40%;width:100%;height:100%;translate:none}
+ .hero-studio .scroll-note{left:50%;right:auto;bottom:22px;transform:translateX(-50%);font-size:8px;width:180px}
+ .hero-studio .hero-wipe{padding:24px 5vw}
+ .hero-studio .wipe-title{font-size:29vw;line-height:.82;letter-spacing:-.065em}
+ .hero-studio .wipe-kicker{font-size:9px;letter-spacing:.13em;margin-bottom:36px;text-align:center}
+ .mobile-found{display:none}
+ :root .header .contact-pill{min-height:46px;padding:12px 14px;font-size:9px;gap:14px}
+ .header{padding:20px 5vw}
+}
+@media(max-width:900px) and (max-height:650px){
+ .hero-studio{padding-top:88px;gap:8px}
+ .hero-studio .hero-intro h1{font-size:clamp(26px,6.9vw,34px)}
+ .hero-studio .scroll-note{bottom:14px;gap:5px}
+}
+@media(max-width:900px) and (prefers-reduced-motion:reduce){
+ .mobile-found{display:flex;height:auto;min-height:0;padding:52px 6vw;gap:30px}
+}

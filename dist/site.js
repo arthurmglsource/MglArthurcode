@@ -19,6 +19,7 @@ const projects=data.projects,map=$('#gallery-map');
 // Primary screens keep their approved positions; additional real prints fill the perimeter.
 [...projects,...projects.flatMap(p=>(p.screens||[]).map(screen=>({...p,...screen})))].forEach(p=>{
  const tile=document.createElement('div');tile.className='project-tile';tile.dataset.project=p.id;
+ tile.style.setProperty('--mobile-order',projects.findIndex(project=>project.id===p.id));
  tile.style.left=p.position[0]+'%';tile.style.top=p.position[1]+'%';tile.style.setProperty('--tile-width',p.tileWidth+'%');
  const img=document.createElement('img');img.src=p.image.includes('-story-1280.webp')?p.image.replace('-1280.webp','-640.webp'):p.image.replace('.webp','-thumb.webp');
  img.srcset=img.src+' 640w, '+p.image+' 1280w';
@@ -54,7 +55,7 @@ const fine=matchMedia('(hover:hover) and (pointer:fine)');
 stage.addEventListener('pointermove',e=>{if(!fine.matches||reduced)return;const r=stage.getBoundingClientRect();gTargetX=-(e.clientX-r.left-r.width/2)*.095;gTargetY=-(e.clientY-r.top-r.height/2)*.12;});
 stage.addEventListener('pointerleave',()=>{gTargetX=gTargetY=0;active.textContent='MGL / PROJETOS SELECIONADOS';});
 $$('.project-tile').forEach(tile=>{tile.addEventListener('pointerenter',()=>{const p=projects.find(p=>p.id===tile.dataset.project);active.textContent=p.title.toUpperCase()+' / '+(p.concept?'CONCEPT PROJECT':'WEBSITE');});});
-if(matchMedia('(max-width:700px)').matches)$('.gallery-instruction').textContent='Explore os projetos abaixo.';
+if(matchMedia('(max-width:800px)').matches)$('.gallery-instruction').textContent='Explore os projetos abaixo.';
 if(!reduced&&window.gsap){
  gsap.from('.portrait-move',{opacity:0,duration:1.2,ease:'power3.out'});
  gsap.from('.hero-intro',{y:20,opacity:0,duration:1,stagger:.1,delay:.4,ease:'power3.out'});

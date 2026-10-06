@@ -34,3 +34,12 @@
 @media(max-width:800px){.pricing.offer{padding:0}.offer-scene{display:block;padding:0 6vw 34px;min-height:0;border-radius:0}.offer-portrait{position:relative;display:block;width:calc(100% + 12vw);margin-left:-6vw;height:clamp(380px,70vw,600px);z-index:0}.offer-portrait img{object-position:50% 12%;filter:saturate(.62) brightness(.9)}.offer-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#111111,transparent 30%);pointer-events:none}.offer-scene::before{display:none}.offer-content{position:relative;width:100%;max-width:620px;margin:-32px auto 0;z-index:1}.offer .offer-card{padding:28px;border-radius:22px;backdrop-filter:none;background:#1d1d1d}.offer-card h2{font-size:clamp(29px,4.8vw,40px)}.offer .offer-services{font-size:16px;gap:14px}.offer-intro{font-size:15px}.offer .price-value{font-size:54px}.offer-care{font-size:13px}.offer .custom-line p{font-size:13px}}
 @media(max-width:430px){.offer-scene{padding:0 5vw 28px;border-radius:0}.offer-portrait{width:calc(100% + 10vw);margin-left:-5vw;height:390px}.offer .offer-card{padding:24px 20px}.offer-card h2{font-size:29px}.offer .offer-services{font-size:14px;gap:13px;margin:23px 0 27px}.offer .price-value{font-size:46px}.offer-purchase{gap:14px}:root .offer .mgl-cta{font-size:9px;padding:13px 14px;gap:14px;min-height:49px}.offer .underlink{font-size:11px}.offer-care{font-size:12px}}
 @media(forced-colors:active){.offer-scene::after{display:none}.offer .offer-card{border-color:CanvasText}}
+
+/* Mobile portrait uses its native 3:4 frame, keeping the shirt and shoulders. */
+@media(max-width:800px){
+ .offer-portrait{width:calc(100% + 12vw);height:auto;aspect-ratio:3/4;max-width:620px;margin:0 auto;left:50%;transform:translateX(-50%)}
+ .offer-portrait img{object-fit:contain;object-position:50% 50%}
+ .offer-portrait::after{background:linear-gradient(0deg,#111111,transparent 16%)}
+ .offer-content{margin:-20px auto 0}
+}
+@media(max-width:430px){.offer-portrait{width:calc(100% + 10vw)}}
