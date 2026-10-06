@@ -16,9 +16,20 @@ toggle.addEventListener('click',()=>setMenu(!menuOpen));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menuOpen)setMenu(false);if(e.key==='Tab'&&menuOpen){const els=[toggle,...menu.querySelectorAll('a')];const first=els[0],last=els.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
 $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const target=$(a.getAttribute('href'));if(!target)return;e.preventDefault();if(menuOpen)setMenu(false);if(lenis)lenis.scrollTo(target,{offset:0});else target.scrollIntoView({behavior:reduced?'instant':'smooth'});if(a.classList.contains('skip')){target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}}));
 const projects=data.projects,map=$('#gallery-map');
-// Asymmetric archive: the empty centre keeps the editorial headline readable.
-const positions=[[0,9],[20,9],[80,0],[80,29],[60,9],[0,38],[0,68],[20,68],[40,80],[60,68],[80,65],[20,96],[60,97]];
-positions.forEach(([x,y],i)=>{const p=projects[i%projects.length],button=document.createElement('div');button.className='project-tile';button.style.left=x+'%';button.style.top=y+'%';button.dataset.project=p.id;const img=document.createElement('img');img.src=p.image.replace('.webp','-thumb.webp');img.alt=(p.concept?'Conceito visual para ':'Website de ')+p.title;img.loading='lazy';img.width=640;img.height=427;if(p.concept&&i>6){img.style.setProperty('--crop',i%2?'1.48':'1.22');img.style.transformOrigin=(i%2?'30%':'70%')+' 50%';}const cap=document.createElement('span');cap.className='tile-caption';cap.textContent=p.title+(p.concept?' · Conceito':'');button.append(img,cap);map.append(button);});
+// Each official project appears once; the editorial centre stays clear.
+projects.forEach(p=>{
+ const tile=document.createElement('div');tile.className='project-tile';tile.dataset.project=p.id;
+ tile.style.left=p.position[0]+'%';tile.style.top=p.position[1]+'%';tile.style.setProperty('--tile-width',p.tileWidth+'%');
+ const img=document.createElement('img');img.src=p.image.replace('.webp','-thumb.webp');
+ img.srcset=p.image.replace('.webp','-thumb.webp')+' 640w, '+p.image+' 1280w';
+ img.sizes='(max-width:700px) calc(100vw - 36px), 20vw';
+ img.alt=p.title+(p.concept?' — CONCEPT PROJECT':' — screenshot do website');
+ img.loading='lazy';img.decoding='async';img.width=1280;img.height=p.imageHeight;
+ tile.style.setProperty('--tile-ratio','1280 / '+p.imageHeight);
+ const caption=document.createElement('span');caption.className='tile-caption';caption.textContent=p.title+(p.concept?' · CONCEPT PROJECT':'');
+ if(p.concept)tile.classList.add('project-concept');
+ tile.append(img,caption);map.append(tile);
+});
 const contactDialog=$('#contact-dialog');
 contactDialog.setAttribute('data-lenis-prevent','');contactDialog.querySelector('.dialog-close').addEventListener('click',()=>contactDialog.close());contactDialog.addEventListener('close',()=>lock(false));contactDialog.addEventListener('click',e=>{if(e.target===contactDialog){const r=contactDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)contactDialog.close();}});
 $$('[data-country]').forEach(b=>b.addEventListener('click',()=>{$('#price-amount').textContent=data.prices[b.dataset.country];$$('[data-country]').forEach(el=>el.setAttribute('aria-pressed',String(el===b)));}));
@@ -42,7 +53,7 @@ let gx=0,gy=0,gTargetX=0,gTargetY=0;
 const fine=matchMedia('(hover:hover) and (pointer:fine)');
 stage.addEventListener('pointermove',e=>{if(!fine.matches||reduced)return;const r=stage.getBoundingClientRect();gTargetX=-(e.clientX-r.left-r.width/2)*.095;gTargetY=-(e.clientY-r.top-r.height/2)*.12;});
 stage.addEventListener('pointerleave',()=>{gTargetX=gTargetY=0;active.textContent='MGL / PROJETOS SELECIONADOS';});
-$$('.project-tile').forEach(tile=>{tile.addEventListener('pointerenter',()=>{const p=projects.find(p=>p.id===tile.dataset.project);active.textContent=p.title.toUpperCase()+' / '+(p.concept?'CONCEITO':'WEBSITE');});});
+$$('.project-tile').forEach(tile=>{tile.addEventListener('pointerenter',()=>{const p=projects.find(p=>p.id===tile.dataset.project);active.textContent=p.title.toUpperCase()+' / '+(p.concept?'CONCEPT PROJECT':'WEBSITE');});});
 if(matchMedia('(max-width:700px)').matches)$('.gallery-instruction').textContent='Explore os projetos abaixo.';
 if(!reduced&&window.gsap){
  gsap.from('.portrait-move',{opacity:0,duration:1.2,ease:'power3.out'});

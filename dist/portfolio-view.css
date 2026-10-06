@@ -4,3 +4,8 @@
 @media(max-width:700px){
  .work-bar{display:flex;justify-content:space-between;align-items:center;gap:12px}
 }
+
+/* Official screenshots retain their own proportions and existing motion. */
+#work .project-tile{width:var(--tile-width,18.3%);aspect-ratio:var(--tile-ratio,1.92)}
+#work .project-concept .tile-caption{transform:none}
+@media(max-width:700px){#work .project-tile{width:100%}}
