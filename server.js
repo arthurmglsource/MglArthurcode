@@ -87,7 +87,8 @@ app.post('/api/leads', async (req, res) => {
   }
 
   // Forward to MGL OS CRM endpoint
-  const mglEndpoint = process.env.MGL_OS_API_URL || (process.env.NODE_ENV === "development" ? "http://127.0.0.1:3100/api/leads" : "https://mgl-os.vercel.app/api/leads");
+  const isLocal = req.hostname === "localhost" || req.hostname === "127.0.0.1";
+  const mglEndpoint = process.env.MGL_OS_API_URL || (isLocal ? "http://127.0.0.1:3100/api/leads" : "https://mgl-os.vercel.app/api/leads");
   try {
     const upstreamRes = await fetch(mglEndpoint, {
       method: "POST",
