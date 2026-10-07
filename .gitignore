@@ -10,3 +10,6 @@ dist/server/
 .vscode/
 bun.lock
 metadata.json
+
+.vercel
+.env*
