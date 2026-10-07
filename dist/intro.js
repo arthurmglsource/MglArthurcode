@@ -1,15 +1,16 @@
-/* Logo assembly → background mask → approved Hero entry, once per session. */
+/* Logo assembly → background mask → approved Hero entry, on every load. */
 (()=>{
  const state=window.MGL_INTRO,loader=document.getElementById('mgl-intro');
  if(!state?.active){loader?.remove();return;}
  const logo=document.querySelector('.header .logo'),mark=loader?.querySelector('.mgl-intro-mark');
  if(!loader||!logo||!mark||!window.gsap){state.finish();return;}
+ window.scrollTo(0,0);
  const reduced=matchMedia('(prefers-reduced-motion:reduce)'),mobile=matchMedia('(max-width:800px)');
  const guarded=[...document.querySelectorAll('header,main,footer,.skip')].map(el=>({el,inert:el.inert}));
  guarded.forEach(({el})=>{el.inert=true;});
  const interrupt=e=>{if(e.type==='keydown')state.finish();else e.preventDefault();};
  const leave=()=>state.finish();
- const scroll=()=>{if(scrollY>2)state.finish();};
+ const scroll=()=>{if(state.active&&scrollY>2)window.scrollTo(0,0);};
  window.addEventListener('wheel',interrupt,{passive:false,capture:true});
  window.addEventListener('touchmove',interrupt,{passive:false,capture:true});
  window.addEventListener('keydown',interrupt,true);
@@ -34,8 +35,7 @@
  const whole=document.createElement('div');whole.className='mgl-intro-whole';
  const complete=mark.querySelector('.logo').cloneNode(true);whole.append(complete);mark.append(whole);
  const start=()=>{
-  if(!state.active)return;
-  if(scrollY>2){state.finish();return;}
+  if(!state.active||state.ready)return;
   const slices=mark.querySelectorAll('.mgl-intro-slice'),entry=()=>window.MGL_MOTION?.heroEntry?.play();
   const timeline=gsap.timeline({onComplete:state.finish});state.timeline=timeline;
   if(reduced.matches){
@@ -53,6 +53,6 @@
   state.ready=true;
  };
  // Load only the existing bold wordmark font; no wait for images or other fonts.
- let fontTimeout=setTimeout(()=>state.finish(),500);
- document.fonts.load('700 120px "DM Sans"','MGL.').then(()=>{clearTimeout(fontTimeout);start();},()=>state.finish());
+ let fontTimeout=setTimeout(start,500);
+ document.fonts.load('700 120px "DM Sans"','MGL.').then(()=>{clearTimeout(fontTimeout);start();},()=>{clearTimeout(fontTimeout);start();});
 })();
