@@ -5,7 +5,7 @@ const data=window.MGL_CONTENT, reduced=matchMedia('(prefers-reduced-motion: redu
 let lenis=null, menuOpen=false;
 if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);}
 if(window.Lenis&&!reduced){lenis=new Lenis({duration:1.08,smoothWheel:true,touchMultiplier:1});lenis.on('scroll',()=>window.ScrollTrigger?.update());gsap.ticker.add(time=>lenis.raf(time*1000));gsap.ticker.lagSmoothing(0);}
-window.MGL_MOTION={lenis,reduced,heroProgress:0,pointer:{x:0,y:0}};
+window.MGL_MOTION={lenis,reduced,heroEntry:null,heroProgress:0,pointer:{x:0,y:0}};
 if(!reduced&&window.gsap){
  gsap.from('.booking-intro',{y:20,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.contact.booking',start:'top 85%',once:true}});
 }
@@ -57,8 +57,10 @@ stage.addEventListener('pointerleave',()=>{gTargetX=gTargetY=0;active.textConten
 $$('.project-tile').forEach(tile=>{tile.addEventListener('pointerenter',()=>{const p=projects.find(p=>p.id===tile.dataset.project);active.textContent=p.title.toUpperCase()+' / '+(p.concept?'CONCEPT PROJECT':'WEBSITE');});});
 if(matchMedia('(max-width:800px)').matches)$('.gallery-instruction').textContent='Explore os projetos abaixo.';
 if(!reduced&&window.gsap){
- gsap.from('.portrait-move',{opacity:0,duration:1.2,ease:'power3.out'});
- gsap.from('.hero-intro',{y:20,opacity:0,duration:1,stagger:.1,delay:.4,ease:'power3.out'});
+ const heroEntry=gsap.timeline({paused:!!window.MGL_INTRO?.active});
+ heroEntry.from('.portrait-move',{opacity:0,duration:1.2,ease:'power3.out'},0)
+  .from('.hero-intro',{y:20,opacity:0,duration:1,ease:'power3.out'},.4);
+ window.MGL_MOTION.heroEntry=heroEntry;
  gsap.matchMedia().add('(min-width:1024px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)',()=>{
  const timeline=gsap.timeline({scrollTrigger:{trigger:'.hero-scroll',start:'top top',end:()=>'+='+innerHeight*1.3,pin:'.hero',scrub:1,anticipatePin:1,invalidateOnRefresh:true,onUpdate:self=>{window.MGL_MOTION.heroProgress=self.progress;document.querySelectorAll('.scroll-note').forEach(a=>{a.inert=self.progress>.35;});}}});
  timeline.to('.portrait-move',{scale:1.035,yPercent:0,duration:.45,ease:'none'},0)
