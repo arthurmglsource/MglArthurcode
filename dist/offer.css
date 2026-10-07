@@ -1,18 +1,18 @@
 /* MGL Presence — portrait and offer. All rules stay inside this section. */
-.pricing.offer{display:block;background:#111111;padding:0;color:var(--paper)}
-.offer-scene{position:relative;isolation:isolate;overflow:hidden;background:#111111;border-radius:0;min-height:max(790px,100svh);display:flex;align-items:center;justify-content:flex-end;padding:54px 5vw 44px}
+.pricing.offer{display:block;background:var(--ink);padding:0;color:var(--paper)}
+.offer-scene{position:relative;isolation:isolate;overflow:hidden;background:var(--ink);border-radius:0;min-height:max(790px,100svh);display:flex;align-items:center;justify-content:flex-end;padding:54px 5vw 44px}
 .offer-portrait{position:absolute;inset:0 auto 0 0;width:58%;z-index:-2}
-.offer-portrait img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 43%;filter:saturate(.62) brightness(.82)}
-.offer-scene::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent 24%,#11111126 38%,#111111 58%)}
+.offer-portrait img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 43%;filter:none}
+.offer-scene::before{content:none}
 
 .offer-content{width:49%;max-width:740px;min-width:0}
-.offer .offer-card{border:1px solid #77777770;border-radius:22px;padding:30px 32px 26px;background:#1d1d1de8;margin:0}
+.offer .offer-card{border:1px solid #77777770;border-radius:22px;padding:30px 32px 26px;background:#1d1d1d;color:var(--paper);margin:0}
 .offer-card>.eyebrow{font-size:10px;letter-spacing:.13em;color:#bdbdbd}
 .offer-card h2{font-size:clamp(29px,2.6vw,44px);line-height:1.06;letter-spacing:-.045em;font-weight:600;margin:16px 0 14px}
-.offer-intro{font-size:15px;line-height:1.5;color:#bdbdbd;max-width:420px}
+.offer-intro{font-size:16px;line-height:1.55;color:#bdbdbd;max-width:52ch}
 .offer .offer-services{list-style:none;display:flex;flex-direction:column;gap:13px;margin:26px 0 30px;padding:0;border:0;font-size:clamp(14px,1.15vw,18px);line-height:1.35;font-weight:500}
 .offer .offer-services li{padding:0 0 0 29px;border:0;position:relative}
-.offer-services li::before{content:"✓";position:absolute;top:.02em;left:0;width:18px;height:18px;border:1px solid #aaaaaa;border-radius:50%;font-size:12px;font-weight:500;line-height:17px;text-align:center;color:#eeeeee}
+.offer-services li::before{content:"";position:absolute;top:.12em;left:0;width:18px;height:18px;border:1px solid #888;border-radius:50%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='m5 9 2.5 2.5L13 6' fill='none' stroke='%23eeeeee' stroke-width='1.15' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat}
 .offer .country-switch{display:flex;gap:16px;margin:0 0 14px}
 .offer .country-switch button{padding:0 0 5px;font-size:9px;letter-spacing:.1em;line-height:1.5;color:#888888;background:transparent;border:0;border-radius:0;border-bottom:1px solid transparent}
 .offer .country-switch button[aria-pressed=true]{color:var(--paper);background:transparent;border-color:#aaaaaa}
@@ -23,23 +23,23 @@
 :root .offer .mgl-cta:hover,:root .offer .mgl-cta:focus-visible{background:#dedede;border-color:#dedede}
 .offer .underlink{display:block;margin:18px 0 0;padding:0;font-size:11px;line-height:1.5;text-decoration:none;color:#bdbdbd;border-bottom:1px solid #7777774d}
 .offer .underlink:hover{color:#fff}
-.offer-care{font-size:12px;line-height:1.6;margin:16px 0 0;color:#aaaaaa;max-width:580px}
-.offer .custom-line{display:flex;align-items:center;flex-wrap:wrap;gap:7px 12px;margin:18px 0 0;padding:15px 0 0;border-top:1px solid #7777772e;min-width:0}
-.offer .custom-line>span{font-size:8px;letter-spacing:.08em;width:auto}
-.offer .custom-line p{font-size:12px;line-height:1.5;letter-spacing:0;flex:1;min-width:180px}
-.offer .custom-line em{color:inherit;font:inherit}
-.offer .custom-line a{font-size:24px;line-height:1}
+.offer .custom-line{display:grid;grid-template-columns:auto minmax(0,1fr) 24px;align-items:center;gap:8px 12px;margin:22px 0 0;padding:18px 0 0;border-top:1px solid #7777774d;min-width:0;color:var(--paper)}
+.offer .custom-line>span{font-size:8px;letter-spacing:.08em;line-height:1.5;width:auto;color:#bdbdbd}
+.offer .custom-line p{font-size:12px;line-height:1.5;letter-spacing:0;min-width:0;margin:0;text-wrap:pretty}
+.offer .custom-line em{color:#aaaaaa;font:inherit}
+.offer .custom-line a{font-size:24px;line-height:1;justify-self:end;margin:0}
+@media(max-width:600px){.offer .custom-line{grid-template-columns:minmax(0,1fr) 24px}.offer .custom-line>span{grid-column:1}.offer .custom-line p{grid-column:1;grid-row:2}.offer .custom-line a{grid-column:2;grid-row:2}}
 @media(min-width:1600px){.offer-scene{min-height:870px}.offer-portrait{width:56%}.offer-content{width:46%}.offer .offer-services{gap:16px}}
 @media(min-width:801px) and (max-width:1100px){.offer-scene{padding:44px 4vw;min-height:790px}.offer-content{width:52%}.offer .offer-card{padding:26px 25px}.offer-portrait{width:58%}.offer-card h2{font-size:31px}.offer-purchase{gap:18px}.offer .price-value{font-size:44px}}
-@media(max-width:800px){.pricing.offer{padding:0}.offer-scene{display:block;padding:0 6vw 34px;min-height:0;border-radius:0}.offer-portrait{position:relative;display:block;width:calc(100% + 12vw);margin-left:-6vw;height:clamp(380px,70vw,600px);z-index:0}.offer-portrait img{object-position:50% 12%;filter:saturate(.62) brightness(.9)}.offer-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#111111,transparent 30%);pointer-events:none}.offer-scene::before{display:none}.offer-content{position:relative;width:100%;max-width:620px;margin:-32px auto 0;z-index:1}.offer .offer-card{padding:28px;border-radius:22px;backdrop-filter:none;background:#1d1d1d}.offer-card h2{font-size:clamp(29px,4.8vw,40px)}.offer .offer-services{font-size:16px;gap:14px}.offer-intro{font-size:15px}.offer .price-value{font-size:54px}.offer-care{font-size:13px}.offer .custom-line p{font-size:13px}}
-@media(max-width:430px){.offer-scene{padding:0 5vw 28px;border-radius:0}.offer-portrait{width:calc(100% + 10vw);margin-left:-5vw;height:390px}.offer .offer-card{padding:24px 20px}.offer-card h2{font-size:29px}.offer .offer-services{font-size:14px;gap:13px;margin:23px 0 27px}.offer .price-value{font-size:46px}.offer-purchase{gap:14px}:root .offer .mgl-cta{font-size:9px;padding:13px 14px;gap:14px;min-height:49px}.offer .underlink{font-size:11px}.offer-care{font-size:12px}}
+@media(max-width:800px){.pricing.offer{padding:0}.offer-scene{display:block;padding:0 6vw 34px;min-height:0;border-radius:0}.offer-portrait{position:relative;display:block;width:calc(100% + 12vw);margin-left:-6vw;height:clamp(380px,70vw,600px);z-index:0}.offer-portrait img{object-position:50% 12%;filter:none}.offer-portrait::after{content:none}.offer-scene::before{display:none}.offer-content{position:relative;width:100%;max-width:620px;margin:-32px auto 0;z-index:1}.offer .offer-card{padding:28px;border-radius:22px;backdrop-filter:none;background:#1d1d1d}.offer-card h2{font-size:clamp(29px,4.8vw,40px)}.offer .offer-services{font-size:16px;gap:14px}.offer-intro{font-size:15px}.offer .price-value{font-size:54px}.offer .custom-line p{font-size:13px}}
+@media(max-width:430px){.offer-scene{padding:0 5vw 28px;border-radius:0}.offer-portrait{width:calc(100% + 10vw);margin-left:-5vw;height:390px}.offer .offer-card{padding:24px 20px}.offer-card h2{font-size:29px}.offer .offer-services{font-size:14px;gap:13px;margin:23px 0 27px}.offer .price-value{font-size:46px}.offer-purchase{gap:14px}:root .offer .mgl-cta{font-size:9px;padding:13px 14px;gap:14px;min-height:49px}.offer .underlink{font-size:11px}}
 @media(forced-colors:active){.offer-scene::after{display:none}.offer .offer-card{border-color:CanvasText}}
 
 /* Mobile portrait uses its native 3:4 frame, keeping the shirt and shoulders. */
 @media(max-width:800px){
  .offer-portrait{width:calc(100% + 12vw);height:auto;aspect-ratio:3/4;max-width:620px;margin:0 auto;left:50%;transform:translateX(-50%)}
  .offer-portrait img{object-fit:contain;object-position:50% 50%}
- .offer-portrait::after{background:linear-gradient(0deg,#111111,transparent 16%)}
- .offer-content{margin:-20px auto 0}
+ .offer-portrait::after{content:none}
+ .offer-content{margin:-12px auto 0}
 }
 @media(max-width:430px){.offer-portrait{width:calc(100% + 10vw)}}
