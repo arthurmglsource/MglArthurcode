@@ -34,24 +34,19 @@
     });
 
     const mobile = context.conditions.mobile;
-    // The existing dark-section span rule uses !important. Scope the final
-    // MGL paper colour to generated words without changing that shared rule.
-    const finalColor = getComputedStyle(heading).color;
-    words.forEach(word => word.style.setProperty('color', finalColor, 'important'));
-    gsap.set(words, {
-      opacity: mobile ? 0.52 : 0.42
-    });
+    // Animate a scoped colour variable, bypassing the shared dark span rules.
+    gsap.set(words, {'--word-color':'#484848', opacity:1});
     gsap.to(words, {
-      opacity: 1,
-      duration: 0.18,
-      stagger: {amount: 1},
-      ease: 'none',
-      scrollTrigger: {
-        id: 'mgl-manifesto-words',
-        trigger: heading,
-        start: mobile ? 'top 80%' : 'top 85%',
-        end: mobile ? 'bottom 62%' : 'bottom 60%',
-        scrub: mobile ? 0.22 : 0.45
+      '--word-color':'#f7f7f7',
+      duration:0.22,
+      stagger:{amount:1},
+      ease:'none',
+      scrollTrigger:{
+        id:'mgl-manifesto-words', trigger:heading,
+        start:mobile ? 'top 82%' : 'top 85%',
+        end:()=>'+='+Math.max(heading.offsetHeight,innerHeight*(mobile ? .43 : .55)),
+        scrub:mobile ? .18 : .3,
+        invalidateOnRefresh:true
       }
     });
 
