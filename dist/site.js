@@ -3,17 +3,8 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const data=window.MGL_CONTENT, reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let lenis=null, menuOpen=false;
-const isTouch=('ontouchstart' in window)||(navigator.maxTouchPoints>0)||matchMedia('(pointer: coarse)').matches;
-if(window.gsap&&window.ScrollTrigger){
- gsap.registerPlugin(ScrollTrigger);
- ScrollTrigger.config({ignoreMobileResize:true});
-}
-if(window.Lenis&&!reduced&&!isTouch){
- lenis=new Lenis({duration:.9,smoothWheel:true});
- lenis.on('scroll',()=>window.ScrollTrigger?.update());
- gsap.ticker.add(time=>lenis.raf(time*1000));
- gsap.ticker.lagSmoothing(0);
-}
+if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);}
+if(window.Lenis&&!reduced){lenis=new Lenis({duration:.9,smoothWheel:true,syncTouch:false,touchMultiplier:1});lenis.on('scroll',()=>window.ScrollTrigger?.update());gsap.ticker.add(time=>lenis.raf(time*1000));gsap.ticker.lagSmoothing(0);}
 window.MGL_MOTION={lenis,reduced,heroEntry:null,heroProgress:0,pointer:{x:0,y:0}};
 if(!reduced&&window.gsap){
  gsap.from('.booking-intro',{y:20,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.contact.booking',start:'top 85%',once:true}});
@@ -103,10 +94,7 @@ if(!reduced&&window.gsap){
  $$('.section-heading,.pricing-title,.process li,.about-text,.contact h2').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
  if($('.about-photo')) gsap.fromTo('.about-photo img',{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:'.about-photo',start:'top bottom',end:'bottom top',scrub:true}});
 
- if(fine.matches){
-  const tick=()=>{gx+=(gTargetX-gx)*.055;gy+=(gTargetY-gy)*.055;map.style.transform=`translate3d(${gx}px,${gy}px,0)`;};
-  gsap.ticker.add(tick);
- }
+ const tick=()=>{if(fine.matches){gx+=(gTargetX-gx)*.055;gy+=(gTargetY-gy)*.055;map.style.transform=`translate3d(${gx}px,${gy}px,0)`;}};gsap.ticker.add(tick);
  $$('details').forEach(el=>el.addEventListener('toggle',()=>ScrollTrigger.refresh()));
  document.fonts.ready.then(()=>ScrollTrigger.refresh());window.addEventListener('load',()=>ScrollTrigger.refresh());
 }
