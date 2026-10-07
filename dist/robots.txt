@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-Sitemap: https://www.mglgrowth.eu/sitemap.xml
+Sitemap: https://mglgrowth.eu/sitemap.xml
