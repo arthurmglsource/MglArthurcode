@@ -3,11 +3,11 @@
 // In Google's booking form, add Company and WhatsApp alongside name/email.
 // Only this setting needs changing to activate all meeting actions.
 const GOOGLE_BOOKING_URL = "https://calendar.app.google/1CnJ6tHeD56DbUkd8";
-const WHATSAPP_URL = "https://api.whatsapp.com/send/?phone=5531998517356&text=Ol%C3%A1%21+Vim+pelo+site+e+gostaria+de+entender+melhor+como+voc%C3%AAs+podem+ajudar+o+meu+neg%C3%B3cio+a+ter+mais+presen%C3%A7a+no+Google+e+gerar+mais+contactos&type=phone_number&app_absent=0";
+const WHATSAPP_URL = "https://wa.me/351929222317?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20entender%20melhor%20como%20voc%C3%AA%20podem%20ajudar%20o%20meu%20neg%C3%B3cio%20";
 window.MGL_CONTENT={
  instagramUrl:'https://www.instagram.com/mglgrowth/',
- whatsappNumber:'5531998517356',
- whatsappMessage:'Olá! Vim pelo site e gostaria de entender melhor como vocês podem ajudar o meu negócio a ter mais presença no Google e gerar mais contactos',
+ whatsappNumber:'351929222317',
+ whatsappMessage:'Olá! Vim pelo site e gostaria de entender melhor como você podem ajudar o meu negócio ',
  whatsappUrl:WHATSAPP_URL,
  meetingUrl:GOOGLE_BOOKING_URL,
  prices:{PT:'€89',BR:'R$497'},
