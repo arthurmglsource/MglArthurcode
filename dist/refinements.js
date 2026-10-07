@@ -7,7 +7,13 @@
   if(payload.phone.replace(/\D/g,'').length<7){feedback.textContent='Indique um telefone válido, incluindo o indicativo.';form.elements.phone.focus();return;}
   busy=true;const button=form.querySelector('button');button.disabled=true;button.textContent='A ENVIAR…';feedback.textContent='';
   try{
-   const response=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(15000)});
+   let response;
+   try {
+     response = await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(12000)});
+     if(!response.ok && response.status >= 500) throw Error('fallback');
+   } catch(err) {
+     response = await fetch('https://mgl-os.vercel.app/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(12000)});
+   }
    const result=await response.json();
    if(!response.ok||result.ok!==true)throw Error(result.error||'Não foi possível enviar. Tente novamente.');
    feedback.innerHTML='PEDIDO RECEBIDO. O Arthur entrará em contacto consigo. <a href="'+(window.MGL_CONTENT.whatsappUrl||'#')+'" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;margin-left:6px;display:inline-block">Conversar no WhatsApp ↗</a>';

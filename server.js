@@ -86,7 +86,34 @@ app.post('/api/leads', (req, res) => {
     return reply(res, { error: 'Já recebemos os seus pedidos. Tente novamente mais tarde.' }, 429);
   }
 
-  // Store the lead
+  // Forward to MGL OS CRM endpoint
+  const mglEndpoint = process.env.MGL_OS_API_URL || (process.env.NODE_ENV === "development" ? "http://127.0.0.1:3100/api/leads" : "https://mgl-os.vercel.app/api/leads");
+  try {
+    const upstreamRes = await fetch(mglEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Origin": req.headers.origin || "http://127.0.0.1:3000",
+        "X-Forwarded-For": req.ip || "127.0.0.1"
+      },
+      body: JSON.stringify({
+        id,
+        name: name.trim(),
+        company: company.trim(),
+        phone: phone.trim(),
+        email: normalizedEmail
+      }),
+      signal: AbortSignal.timeout(10000)
+    });
+    const data = await upstreamRes.json().catch(() => ({}));
+    if (!upstreamRes.ok || data.ok !== true) {
+      return reply(res, { error: data.error || "Não foi possível enviar." }, upstreamRes.status || 500);
+    }
+  } catch (err) {
+    console.error("MGL OS forward error:", err.message);
+  }
+
+  // Store locally for cache/idempotency
   leads.push({
     id,
     company: company.trim(),
@@ -96,7 +123,7 @@ app.post('/api/leads', (req, res) => {
     created_at: Date.now(),
   });
 
-  return reply(res, { ok: true }, 201);
+  return reply(res, { ok: true, success: true }, 201);
 });
 
 // All other methods on /api/leads are not allowed
