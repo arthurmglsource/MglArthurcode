@@ -1,11 +1,11 @@
 {
   "name": "MGL Growth",
   "short_name": "MGL",
-  "description": "Web Design e Criação de Sites em Lisboa",
+  "description": "Presen\u00e7a digital que trabalha pelo seu neg\u00f3cio.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#141414",
-  "theme_color": "#f7f7f7",
+  "theme_color": "#141414",
   "icons": [
     {
       "src": "/assets/icon-192.png",
