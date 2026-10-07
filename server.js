@@ -22,7 +22,7 @@ const reply = (res, body, status = 200) => {
 };
 
 // POST /api/leads endpoint
-app.post('/api/leads', (req, res) => {
+app.post('/api/leads', async (req, res) => {
   // Origin check (if provided, verify against host or trusted origins)
   const origin = req.headers.origin;
   const host = req.get('host');
