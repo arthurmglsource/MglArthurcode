@@ -23,16 +23,16 @@
 :root .offer .mgl-cta:hover,:root .offer .mgl-cta:focus-visible{background:#dedede;border-color:#dedede}
 .offer .underlink{display:block;margin:18px 0 0;padding:0;font-size:11px;line-height:1.5;text-decoration:none;color:#bdbdbd;border-bottom:1px solid #7777774d}
 .offer .underlink:hover{color:#fff}
-.offer-care{font-size:12px;line-height:1.6;margin:16px 0 0;color:var(--ink);max-width:580px}
-.offer .custom-line{display:flex;align-items:center;flex-wrap:wrap;gap:7px 12px;margin:18px 0 0;padding:15px 0 0;border-top:1px solid var(--line);min-width:0}
-.offer .custom-line>span{font-size:8px;letter-spacing:.08em;width:auto}
-.offer .custom-line p{font-size:12px;line-height:1.5;letter-spacing:0;flex:1;min-width:180px}
-.offer .custom-line em{color:inherit;font:inherit}
-.offer .custom-line a{font-size:24px;line-height:1}
+.offer .custom-line{display:grid;grid-template-columns:auto minmax(0,1fr) 24px;align-items:center;gap:8px 12px;margin:22px 0 0;padding:18px 0 0;border-top:1px solid #7777774d;min-width:0;color:var(--paper)}
+.offer .custom-line>span{font-size:8px;letter-spacing:.08em;line-height:1.5;width:auto;color:#bdbdbd}
+.offer .custom-line p{font-size:12px;line-height:1.5;letter-spacing:0;min-width:0;margin:0;text-wrap:pretty}
+.offer .custom-line em{color:#aaaaaa;font:inherit}
+.offer .custom-line a{font-size:24px;line-height:1;justify-self:end;margin:0}
+@media(max-width:600px){.offer .custom-line{grid-template-columns:minmax(0,1fr) 24px}.offer .custom-line>span{grid-column:1}.offer .custom-line p{grid-column:1;grid-row:2}.offer .custom-line a{grid-column:2;grid-row:2}}
 @media(min-width:1600px){.offer-scene{min-height:870px}.offer-portrait{width:56%}.offer-content{width:46%}.offer .offer-services{gap:16px}}
 @media(min-width:801px) and (max-width:1100px){.offer-scene{padding:44px 4vw;min-height:790px}.offer-content{width:52%}.offer .offer-card{padding:26px 25px}.offer-portrait{width:58%}.offer-card h2{font-size:31px}.offer-purchase{gap:18px}.offer .price-value{font-size:44px}}
-@media(max-width:800px){.pricing.offer{padding:0}.offer-scene{display:block;padding:0 6vw 34px;min-height:0;border-radius:0}.offer-portrait{position:relative;display:block;width:calc(100% + 12vw);margin-left:-6vw;height:clamp(380px,70vw,600px);z-index:0}.offer-portrait img{object-position:50% 12%;filter:none}.offer-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#111111,transparent 30%);pointer-events:none}.offer-scene::before{display:none}.offer-content{position:relative;width:100%;max-width:620px;margin:-32px auto 0;z-index:1}.offer .offer-card{padding:28px;border-radius:22px;backdrop-filter:none;background:#1d1d1d}.offer-card h2{font-size:clamp(29px,4.8vw,40px)}.offer .offer-services{font-size:16px;gap:14px}.offer-intro{font-size:15px}.offer .price-value{font-size:54px}.offer-care{font-size:13px}.offer .custom-line p{font-size:13px}}
-@media(max-width:430px){.offer-scene{padding:0 5vw 28px;border-radius:0}.offer-portrait{width:calc(100% + 10vw);margin-left:-5vw;height:390px}.offer .offer-card{padding:24px 20px}.offer-card h2{font-size:29px}.offer .offer-services{font-size:14px;gap:13px;margin:23px 0 27px}.offer .price-value{font-size:46px}.offer-purchase{gap:14px}:root .offer .mgl-cta{font-size:9px;padding:13px 14px;gap:14px;min-height:49px}.offer .underlink{font-size:11px}.offer-care{font-size:12px}}
+@media(max-width:800px){.pricing.offer{padding:0}.offer-scene{display:block;padding:0 6vw 34px;min-height:0;border-radius:0}.offer-portrait{position:relative;display:block;width:calc(100% + 12vw);margin-left:-6vw;height:clamp(380px,70vw,600px);z-index:0}.offer-portrait img{object-position:50% 12%;filter:none}.offer-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#111111,transparent 30%);pointer-events:none}.offer-scene::before{display:none}.offer-content{position:relative;width:100%;max-width:620px;margin:-32px auto 0;z-index:1}.offer .offer-card{padding:28px;border-radius:22px;backdrop-filter:none;background:#1d1d1d}.offer-card h2{font-size:clamp(29px,4.8vw,40px)}.offer .offer-services{font-size:16px;gap:14px}.offer-intro{font-size:15px}.offer .price-value{font-size:54px}.offer .custom-line p{font-size:13px}}
+@media(max-width:430px){.offer-scene{padding:0 5vw 28px;border-radius:0}.offer-portrait{width:calc(100% + 10vw);margin-left:-5vw;height:390px}.offer .offer-card{padding:24px 20px}.offer-card h2{font-size:29px}.offer .offer-services{font-size:14px;gap:13px;margin:23px 0 27px}.offer .price-value{font-size:46px}.offer-purchase{gap:14px}:root .offer .mgl-cta{font-size:9px;padding:13px 14px;gap:14px;min-height:49px}.offer .underlink{font-size:11px}}
 @media(forced-colors:active){.offer-scene::after{display:none}.offer .offer-card{border-color:CanvasText}}
 
 /* Mobile portrait uses its native 3:4 frame, keeping the shirt and shoulders. */
