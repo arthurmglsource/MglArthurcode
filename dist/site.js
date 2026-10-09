@@ -3,8 +3,9 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const data=window.MGL_CONTENT, reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let lenis=null, menuOpen=false;
-if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);}
-if(window.Lenis&&!reduced){lenis=new Lenis({duration:.9,smoothWheel:true,syncTouch:false,touchMultiplier:1});lenis.on('scroll',()=>window.ScrollTrigger?.update());gsap.ticker.add(time=>lenis.raf(time*1000));gsap.ticker.lagSmoothing(0);}
+const isTouch=matchMedia('(hover: none) and (pointer: coarse)').matches||matchMedia('(max-width: 1024px)').matches||('ontouchstart' in window)||(navigator.maxTouchPoints>0);
+if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);ScrollTrigger.config({ignoreMobileResize:true});}
+if(window.Lenis&&!reduced&&!isTouch){lenis=new Lenis({duration:.9,smoothWheel:true,syncTouch:false,touchMultiplier:1});lenis.on('scroll',()=>window.ScrollTrigger?.update());gsap.ticker.add(time=>lenis.raf(time*1000));gsap.ticker.lagSmoothing(0);}
 window.MGL_MOTION={lenis,reduced,heroEntry:null,heroProgress:0,pointer:{x:0,y:0}};
 if(!reduced&&window.gsap){
  gsap.from('.booking-intro',{y:20,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.contact.booking',start:'top 85%',once:true}});

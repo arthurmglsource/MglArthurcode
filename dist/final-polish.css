@@ -1,7 +1,7 @@
 /* Fine neutral grain. Normal blending keeps it visible on paper and black alike. */
 :root{--mgl-grain-opacity:.07}
 body::before{content:"";position:fixed;inset:0;z-index:89;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(0,0,0,.035) 100%)}
-body::after,dialog:modal::after{content:"";position:fixed;inset:0;width:100%;height:100%;z-index:2147483646;pointer-events:none;background:url('assets/editorial-grain.png') repeat;background-size:128px 128px;opacity:var(--mgl-grain-opacity);mix-blend-mode:normal;animation:mgl-film-grain .8s step-end infinite}
+body::after,dialog:modal::after{content:"";position:fixed;inset:0;width:100%;height:100%;z-index:2147483646;pointer-events:none;background:url('assets/editorial-grain.png') repeat;background-size:128px 128px;opacity:var(--mgl-grain-opacity);mix-blend-mode:normal;animation:mgl-film-grain .8s step-end infinite;will-change:transform;transform:translateZ(0)}
 /* Native dialogs live above every document z-index. Move the same finish into
    their top layer, keeping a single grain pass over the viewport. */
 body:has(dialog:modal)::after{visibility:hidden}
