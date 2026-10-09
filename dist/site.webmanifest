@@ -1,19 +1,19 @@
 {
   "name": "MGL Growth",
   "short_name": "MGL",
-  "description": "Presen\u00e7a digital que trabalha pelo seu neg\u00f3cio.",
+  "description": "Presença digital que trabalha pelo seu negócio.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#141414",
   "theme_color": "#141414",
   "icons": [
     {
-      "src": "/assets/icon-192.png",
+      "src": "/mgl-favicon-v2-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/assets/icon-512.png",
+      "src": "/mgl-favicon-v2-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

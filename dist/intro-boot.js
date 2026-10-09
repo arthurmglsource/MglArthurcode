@@ -14,6 +14,14 @@
   document.getElementById('mgl-intro')?.remove();
   history.scrollRestoration=restoration;
   window.MGL_MOTION?.heroEntry?.progress(1).pause();
+  if(window.scrollY<=2){
+   const wipe=document.querySelector('.hero-wipe');
+   if(wipe)wipe.style.clipPath='circle(0% at 50% 72%)';
+   const portrait=document.querySelector('.portrait-move');
+   if(portrait)portrait.style.opacity='1';
+   const heroIntro=document.querySelector('.hero-intro');
+   if(heroIntro)heroIntro.style.opacity='1';
+  }
   if(location.hash&&location.hash!=='#top'){
    const target=document.getElementById(location.hash.slice(1));
    if(target)requestAnimationFrame(()=>target.scrollIntoView());

@@ -30,6 +30,16 @@
  window.addEventListener('scroll',scroll,{passive:true});
  window.addEventListener('pagehide',leave);
  reduced.addEventListener('change',leave);
+ const syncHeroState=()=>{
+  if(window.scrollY<=2){
+   const wipe=document.querySelector('.hero-wipe');
+   if(wipe)wipe.style.clipPath='circle(0% at 50% 72%)';
+   const portrait=document.querySelector('.portrait-move');
+   if(portrait)portrait.style.opacity='1';
+   const heroIntro=document.querySelector('.hero-intro');
+   if(heroIntro)heroIntro.style.opacity='1';
+  }
+ };
  state.cleanup=()=>{
   clearTimeout(imageTimeout);
   state.timeline?.kill();guarded.forEach(({el,inert})=>{el.inert=inert;});
@@ -38,10 +48,33 @@
   window.removeEventListener('pagehide',leave);reduced.removeEventListener('change',leave);
   document.body.style.overflow=bodyOverflow;
   lenis?.scrollTo(0,{immediate:true,force:true});window.scrollTo(0,0);
-  heroScroll.forEach(t=>{t.enable(false,false);t.update();t.getTween()?.progress(1);t.animation?.progress(0);});
+  heroScroll.forEach(t=>{
+   t.getTween()?.kill();
+   t.enable(false,false);
+   if(window.scrollY<=2){t.animation?.progress(0);}else{t.update();}
+  });
   window.MGL_MOTION?.heroEntry?.progress(1).pause();
+  syncHeroState();
+  window.ScrollTrigger?.refresh();
   if(lenis&&!wasStopped)lenis.start();
  };
+ window.addEventListener('pageshow',e=>{
+  if(e.persisted||!state.active){
+   state.finish();
+   syncHeroState();
+   window.ScrollTrigger?.refresh();
+  }
+ });
+ document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='visible'&&!state.active&&window.scrollY<=2){
+   const portrait=document.querySelector('.portrait-move');
+   const heroIntro=document.querySelector('.hero-intro');
+   const wipe=document.querySelector('.hero-wipe');
+   if(portrait&&getComputedStyle(portrait).opacity==='0')portrait.style.opacity='1';
+   if(heroIntro&&getComputedStyle(heroIntro).opacity==='0')heroIntro.style.opacity='1';
+   if(wipe&&getComputedStyle(wipe).clipPath!=='circle(0% at 50% 72%)')wipe.style.clipPath='circle(0% at 50% 72%)';
+  }
+ });
  const count=reduced.matches?1:6;
  for(let i=0;i<count;i++){
   const slice=document.createElement('div');slice.className='mgl-intro-slice';
