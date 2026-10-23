@@ -19,18 +19,4 @@ body.menu-open{overflow:visible}
 .studio-footer .footer-bottom>span{display:inline;width:auto}
 .footer-top>p{max-width:310px;font-size:22px;line-height:1.3;text-wrap:pretty}
 @media(max-width:800px){.footer-top>span{display:block}.footer-top{grid-template-columns:1fr 1fr;gap:22px}.footer-top>p{grid-column:1/-1;font-size:20px;max-width:290px}.footer-top nav{grid-template-columns:1fr;font-size:13px}.footer-top>span{text-align:right;font-size:10px}.studio-footer .footer-bottom{font-size:11px}}
-/* Touch archive: one compact horizontal screen track per project. */
-.portfolio-group[hidden]{display:none}
-@media(max-width:800px){
- #work .gallery-map{gap:26px}
- #work .portfolio-group{min-width:0;display:block}
- .portfolio-group-heading{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:10px;font-size:11px;font-weight:500;letter-spacing:.02em}
- .portfolio-group-heading strong{font-weight:500}.portfolio-group-heading>span{font-size:9px;color:#737373;white-space:nowrap}
- .portfolio-track{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding:0;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#aaa transparent;padding-bottom:10px;touch-action:pan-x pan-y}
- #work .portfolio-track .project-tile{width:86%;order:0;scroll-snap-align:start;aspect-ratio:var(--tile-ratio);border-radius:8px;overflow:hidden}
- #work .portfolio-track .project-tile:only-child{width:100%}
- #work .portfolio-track .project-tile img{width:100%;height:100%;object-fit:contain;transform:none}
- #work .portfolio-track .tile-caption{font-size:10px!important;padding:20px 10px 10px}
- #work .work-foot{font-size:9px}.portfolio-track::-webkit-scrollbar{height:3px}.portfolio-track::-webkit-scrollbar-thumb{background:#aaa;border-radius:3px}
-}
 @media(prefers-reduced-motion:reduce){.site-menu,.site-menu *{transition:none!important}.portfolio-track{scroll-behavior:auto}}

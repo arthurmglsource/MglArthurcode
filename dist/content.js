@@ -13,156 +13,214 @@ window.MGL_CONTENT={
  prices:{PT:'€89',BR:'R$497'},
  projects:[
   {
+    "image": "assets/portfolio/vintage-hero-update-1280.webp",
+    "imageHeight": 672,
+    "label": "Hero",
+    "id": "vintage-culture",
+    "title": "Vintage Culture",
+    "category": "CONCEPT WEBSITE",
+    "concept": true,
+    "screens": [
+      {
+        "image": "assets/portfolio/vintage-collage-update-1280.webp",
+        "imageHeight": 662,
+        "label": "Collage / timeline",
+        "offset": [
+          -110,
+          -190
+        ],
+        "tileWidth": 200
+      },
+      {
+        "image": "assets/portfolio/vintage-editorial-update-1280.webp",
+        "imageHeight": 660,
+        "label": "Composição editorial",
+        "offset": [
+          240,
+          -145
+        ],
+        "tileWidth": 220
+      }
+    ],
+    "position": [
+      610,
+      380
+    ],
+    "tileWidth": 420
+  },
+  {
+    "image": "assets/portfolio/guarana-hero-update-1280.webp",
+    "imageHeight": 661,
+    "label": "Original do Brasil",
+    "id": "guarana-antarctica",
+    "title": "Guaraná Antarctica",
+    "category": "DIGITAL EXPERIENCE",
+    "screens": [
+      {
+        "image": "assets/portfolio/guarana-original-zero-update-1280.webp",
+        "imageHeight": 658,
+        "label": "Original ou Zero",
+        "offset": [
+          320,
+          -160
+        ],
+        "tileWidth": 195
+      },
+      {
+        "image": "assets/portfolio/guarana-products-update-1280.webp",
+        "imageHeight": 662,
+        "label": "Nossos produtos",
+        "offset": [
+          210,
+          245
+        ],
+        "tileWidth": 220
+      }
+    ],
+    "position": [
+      1530,
+      400
+    ],
+    "tileWidth": 410
+  },
+  {
+    "id": "vinicius-figueiredo",
+    "title": "Vinicius Figueiredo",
+    "category": "WEBSITE",
+    "image": "assets/portfolio/vinicius-new-hero-update-1280.webp",
+    "concept": false,
+    "position": [
+      510,
+      890
+    ],
+    "tileWidth": 380,
+    "imageHeight": 659,
+    "screens": [
+      {
+        "image": "assets/portfolio/vinicius-01-hero.webp",
+        "imageHeight": 677,
+        "label": "Identidade e estratégia",
+        "offset": [
+          -240,
+          -70
+        ],
+        "tileWidth": 220
+      },
+      {
+        "image": "assets/portfolio/vinicius-02-especialidades-story-1280.webp",
+        "imageHeight": 679,
+        "tileWidth": 205,
+        "label": "Serviços e especialidades",
+        "offset": [
+          40,
+          235
+        ]
+      },
+      {
+        "image": "assets/portfolio/vinicius-03-metodo-story-1280.webp",
+        "imageHeight": 674,
+        "tileWidth": 180,
+        "label": "Método e processo",
+        "offset": [
+          260,
+          205
+        ]
+      }
+    ],
+    "label": "Hero"
+  },
+  {
+    "image": "assets/portfolio/im-beauty-hero-update-1280.webp",
+    "imageHeight": 664,
+    "label": "Fundadores",
+    "id": "im-beauty",
+    "title": "IM Beauty Center",
+    "category": "WEBSITE",
+    "screens": [
+      {
+        "image": "assets/portfolio/im-beauty-team-update-1280.webp",
+        "imageHeight": 658,
+        "label": "Equipa e contacto",
+        "offset": [
+          420,
+          60
+        ],
+        "tileWidth": 235
+      }
+    ],
+    "position": [
+      1510,
+      900
+    ],
+    "tileWidth": 410
+  },
+  {
     "id": "malu-criare",
     "title": "Malu Criare",
-    "category": "MARCA PESSOAL / WEBSITE",
+    "category": "WEBSITE",
     "image": "assets/portfolio/malu-01-hero.webp",
     "concept": false,
     "position": [
-      20,
-      9
+      1110,
+      270
     ],
-    "tileWidth": 19.5,
+    "tileWidth": 355,
     "imageHeight": 672,
     "screens": [
       {
         "image": "assets/portfolio/malu-02-concept-criativo-story-1280.webp",
         "imageHeight": 672,
-        "position": [
-          41,
-          1
-        ],
-        "tileWidth": 14,
-        "label": "Direção criativa"
+        "tileWidth": 190,
+        "label": "Direção criativa",
+        "offset": [
+          -170,
+          -190
+        ]
       },
       {
         "image": "assets/portfolio/malu-03-cta-footer-story-1280.webp",
         "imageHeight": 675,
-        "position": [
-          59,
-          1
-        ],
-        "tileWidth": 14,
-        "label": "CTA e footer"
-      }
-    ]
-  },
-  {
-    "id": "jonaas",
-    "title": "Jonaas",
-    "category": "ARTISTA / WEBSITE",
-    "image": "assets/portfolio/jonaas-01-hero.webp",
-    "concept": false,
-    "position": [
-      80,
-      0
-    ],
-    "tileWidth": 17.5,
-    "imageHeight": 676,
-    "screens": [
-      {
-        "image": "assets/portfolio/jonaas-02-musica-player-story-1280.webp",
-        "imageHeight": 667,
-        "position": [
-          0,
-          39
-        ],
-        "tileWidth": 14,
-        "label": "Música e player"
-      },
-      {
-        "image": "assets/portfolio/jonaas-03-editorial-pb-story-1280.webp",
-        "imageHeight": 667,
-        "position": [
-          17,
-          44
-        ],
-        "tileWidth": 12,
-        "label": "Editorial P&B"
-      }
-    ]
-  },
-  {
-    "id": "organiza-pj",
-    "title": "Organiza PJ",
-    "category": "FINANCEIRO & BPO / WEBSITE",
-    "image": "assets/portfolio/organiza-pj-01-hero.webp",
-    "concept": false,
-    "position": [
-      0,
-      9
-    ],
-    "tileWidth": 18.3,
-    "imageHeight": 672,
-    "screens": []
-  },
-  {
-    "id": "vinicius-figueiredo",
-    "title": "Vinicius Figueiredo",
-    "category": "ESTRATÉGIA DIGITAL / WEBSITE",
-    "image": "assets/portfolio/vinicius-01-hero.webp",
-    "concept": false,
-    "position": [
-      0,
-      68
-    ],
-    "tileWidth": 19,
-    "imageHeight": 677,
-    "screens": [
-      {
-        "image": "assets/portfolio/vinicius-02-especialidades-story-1280.webp",
-        "imageHeight": 679,
-        "position": [
-          21,
-          77
-        ],
-        "tileWidth": 15,
-        "label": "Serviços e especialidades"
-      },
-      {
-        "image": "assets/portfolio/vinicius-03-metodo-story-1280.webp",
-        "imageHeight": 674,
-        "position": [
-          39,
-          79
-        ],
-        "tileWidth": 14,
-        "label": "Método e processo"
+        "tileWidth": 185,
+        "label": "CTA e footer",
+        "offset": [
+          390,
+          -105
+        ]
       }
     ]
   },
   {
     "id": "madeireira-hr",
     "title": "Madeireira HR",
-    "category": "MADEIRAS / WEBSITE",
+    "category": "WEBSITE",
     "image": "assets/portfolio/madeireira-hr-02-hero-arquitetura.webp",
     "concept": false,
     "position": [
-      80,
-      34
+      2070,
+      570
     ],
-    "tileWidth": 18.3,
+    "tileWidth": 300,
     "imageHeight": 672,
     "screens": [
       {
         "image": "assets/portfolio/madeireira-hr-01-hero-equipe-story-1280.webp",
         "imageHeight": 668,
-        "position": [
-          68,
-          48
-        ],
-        "tileWidth": 10,
-        "label": "Equipa e empresa"
+        "tileWidth": 170,
+        "label": "Equipa e empresa",
+        "offset": [
+          -100,
+          -130
+        ]
       },
       {
-        "image": "assets/portfolio/madeireira-hr-03-produtos-story-1280.webp",
-        "imageHeight": 670,
-        "position": [
-          80,
-          64
+        "image": "assets/portfolio/madeireira-products-update-1280.webp",
+        "imageHeight": 665,
+        "label": "Madeiras e produtos",
+        "offset": [
+          -40,
+          205
         ],
-        "tileWidth": 14,
-        "label": "Produtos e materiais"
+        "tileWidth": 205
       }
     ]
   },
@@ -173,23 +231,153 @@ window.MGL_CONTENT={
     "image": "assets/portfolio/super-bock-01-hero-concept.webp",
     "concept": true,
     "position": [
-      60,
-      68
+      1120,
+      1130
     ],
-    "tileWidth": 19.5,
+    "tileWidth": 355,
     "imageHeight": 676,
     "screens": [
       {
+        "image": "assets/portfolio/super-bock-product-update-1280.webp",
+        "imageHeight": 658,
+        "label": "Produto",
+        "offset": [
+          380,
+          20
+        ],
+        "tileWidth": 200
+      },
+      {
         "image": "assets/portfolio/super-bock-02-footer-concept-story-1280.webp",
         "imageHeight": 672,
-        "position": [
-          80,
-          83
-        ],
-        "tileWidth": 14,
-        "label": "Footer — CONCEPT PROJECT"
+        "tileWidth": 200,
+        "label": "Footer — CONCEPT PROJECT",
+        "offset": [
+          130,
+          215
+        ]
       }
     ]
+  },
+  {
+    "id": "jonaas",
+    "title": "Jonaas",
+    "category": "ARTIST WEBSITE",
+    "image": "assets/portfolio/jonaas-01-hero.webp",
+    "concept": false,
+    "position": [
+      40,
+      440
+    ],
+    "tileWidth": 310,
+    "imageHeight": 676,
+    "screens": [
+      {
+        "image": "assets/portfolio/jonaas-02-musica-player-story-1280.webp",
+        "imageHeight": 667,
+        "tileWidth": 185,
+        "label": "Música e player",
+        "offset": [
+          80,
+          210
+        ]
+      },
+      {
+        "image": "assets/portfolio/jonaas-03-editorial-pb-story-1280.webp",
+        "imageHeight": 667,
+        "tileWidth": 165,
+        "label": "Editorial P&B",
+        "offset": [
+          -10,
+          350
+        ]
+      }
+    ]
+  },
+  {
+    "image": "assets/portfolio/depra-hero-update-1280.webp",
+    "imageHeight": 665,
+    "label": "Hero",
+    "id": "depra",
+    "title": "Deprá Barber Club",
+    "category": "WEBSITE",
+    "screens": [
+      {
+        "image": "assets/portfolio/depra-gallery-update-1280.webp",
+        "imageHeight": 648,
+        "label": "Galeria",
+        "offset": [
+          350,
+          -5
+        ],
+        "tileWidth": 200
+      },
+      {
+        "image": "assets/portfolio/depra-app-update-1280.webp",
+        "imageHeight": 549,
+        "label": "App e agendamento",
+        "offset": [
+          180,
+          180
+        ],
+        "tileWidth": 220
+      }
+    ],
+    "position": [
+      60,
+      65
+    ],
+    "tileWidth": 330
+  },
+  {
+    "id": "organiza-pj",
+    "title": "Organiza PJ",
+    "category": "WEBSITE",
+    "image": "assets/portfolio/organiza-pj-01-hero.webp",
+    "concept": false,
+    "position": [
+      560,
+      1280
+    ],
+    "tileWidth": 320,
+    "imageHeight": 672,
+    "screens": [
+      {
+        "image": "assets/portfolio/organiza-dashboard-update-1280.webp",
+        "imageHeight": 660,
+        "label": "Seu negócio na palma da sua mão",
+        "offset": [
+          -250,
+          5
+        ],
+        "tileWidth": 205
+      }
+    ]
+  },
+  {
+    "image": "assets/portfolio/odonto-results-update-1280.webp",
+    "imageHeight": 659,
+    "label": "Resultados em destaque",
+    "id": "odonto",
+    "title": "Clínica Odontológica",
+    "category": "WEBSITE",
+    "screens": [
+      {
+        "image": "assets/portfolio/odonto-before-after-update-1280.webp",
+        "imageHeight": 660,
+        "label": "Antes e depois",
+        "offset": [
+          -240,
+          165
+        ],
+        "tileWidth": 200
+      }
+    ],
+    "position": [
+      2020,
+      1230
+    ],
+    "tileWidth": 310
   }
 ]
 };

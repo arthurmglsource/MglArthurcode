@@ -28,3 +28,38 @@
  #work .work-foot{font-size:7px;flex-wrap:wrap;gap:15px;line-height:1.5}
  #work .work-disclosure{font-size:8px;text-align:left;line-height:1.5;margin-top:15px}
 }
+
+/* Expanded editorial wall. Eleven families, an open center, no repeating grid. */
+@media(min-width:801px){
+ #work .gallery-stage{height:calc(100svh - 135px);min-height:780px;max-height:980px;overflow:hidden;touch-action:pan-y}
+ #work .gallery-map{inset:auto;left:calc(50% - 1200px);top:calc(50% - 775px);width:2400px;height:1550px}
+ #work .gallery-center{left:1200px;top:720px;width:min(700px,49vw)}
+ #work .portfolio-group{position:absolute;left:var(--case-x);top:var(--case-y);width:0;height:0}
+ #work .portfolio-group-heading{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ #work .portfolio-track{display:contents}
+ #work .project-tile{position:absolute;left:var(--screen-x);top:var(--screen-y);width:var(--screen-width);margin:0;overflow:visible;background:transparent;cursor:default}
+ #work .project-tile img{display:block;object-fit:contain;filter:none;transform:none}
+ #work .tile-caption{inset:100% 0 auto;padding:8px 0 0;background:none;color:var(--ink);font-size:9px!important;line-height:1.4;letter-spacing:.055em;opacity:0;transform:none}
+ #work .project-tile:hover,#work .project-tile:focus-visible{box-shadow:none;z-index:6}
+ #work .project-tile:hover img,#work .project-tile:focus-visible img{transform:scale(1.02);filter:none}
+ #work .project-tile:hover .tile-caption,#work .project-tile:focus-visible .tile-caption{opacity:1;transform:none}
+ #work .project-tile:focus-visible{outline:1px solid currentColor;outline-offset:5px}
+ #work .gallery-stage:focus-visible{outline:1px solid var(--line);outline-offset:-1px}
+}
+@media(max-width:800px){
+ #work .gallery-map{display:block}
+ #work .portfolio-group{position:relative;margin-bottom:55px}
+ #work .portfolio-group:nth-of-type(3n+2){padding-top:10px}
+ #work .portfolio-group-heading{display:block;font-size:9px;letter-spacing:.065em;line-height:1.5;margin:0 0 16px;font-weight:500;text-transform:uppercase}
+ #work .portfolio-track{display:flex;flex-direction:column;gap:18px;overflow:visible;padding:0;scroll-snap-type:none;touch-action:pan-y}
+ #work .portfolio-track .project-tile{width:100%;margin:0;border-radius:0;overflow:visible;scroll-snap-align:none;aspect-ratio:auto;background:transparent;box-shadow:none}
+ #work .portfolio-track .project-tile:nth-child(n+2){width:78%;align-self:flex-end}
+ #work .portfolio-track .project-tile:nth-child(3n){width:69%;align-self:flex-start}
+ #work .portfolio-group:nth-of-type(even) .project-tile:nth-child(n+2){align-self:flex-start;width:83%}
+ #work .portfolio-group:nth-of-type(even) .project-tile:nth-child(3n){align-self:flex-end;width:72%}
+ #work .portfolio-track .project-tile img{display:block;filter:none;transform:none;object-fit:contain;height:auto;aspect-ratio:var(--tile-ratio)}
+ #work .portfolio-track .tile-caption{position:relative;display:block;inset:auto;padding:7px 0 0;background:none;color:#737373;font-size:9px!important;line-height:1.4;letter-spacing:.025em;transform:none}
+ #work .portfolio-track .project-tile:first-child .tile-caption{display:none}
+ #work .gallery-stage{touch-action:pan-y}
+ #work .gallery-instruction{font-size:12px}
+}
