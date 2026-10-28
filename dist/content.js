@@ -10,21 +10,21 @@ window.MGL_CONTENT={
  whatsappMessage:'Olá! Vim pelo site e gostaria de entender melhor como você podem ajudar o meu negócio ',
  whatsappUrl:WHATSAPP_URL,
  meetingUrl:GOOGLE_BOOKING_URL,
- prices:{PT:'€89',BR:'R$497'},
+ prices:{PT:'€249',BR:'R$1.497'},
  projects:[
   {
     "image": "assets/portfolio/vintage-hero-update-1280.webp",
     "imageHeight": 672,
-    "label": "Hero",
+    "label": "Página inicial",
     "id": "vintage-culture",
     "title": "Vintage Culture",
-    "category": "CONCEPT WEBSITE",
+    "category": "WEBSITE CONCEPTUAL",
     "concept": true,
     "screens": [
       {
         "image": "assets/portfolio/vintage-collage-update-1280.webp",
         "imageHeight": 662,
-        "label": "Collage / timeline",
+        "label": "Colagem e percurso",
         "offset": [
           -110,
           -190
@@ -54,7 +54,7 @@ window.MGL_CONTENT={
     "label": "Original do Brasil",
     "id": "guarana-antarctica",
     "title": "Guaraná Antarctica",
-    "category": "DIGITAL EXPERIENCE",
+    "category": "EXPERIÊNCIA DIGITAL",
     "screens": [
       {
         "image": "assets/portfolio/guarana-original-zero-update-1280.webp",
@@ -127,7 +127,7 @@ window.MGL_CONTENT={
         ]
       }
     ],
-    "label": "Hero"
+    "label": "Página inicial"
   },
   {
     "image": "assets/portfolio/im-beauty-hero-update-1280.webp",
@@ -181,7 +181,7 @@ window.MGL_CONTENT={
         "image": "assets/portfolio/malu-03-cta-footer-story-1280.webp",
         "imageHeight": 675,
         "tileWidth": 185,
-        "label": "CTA e footer",
+        "label": "Contacto e rodapé",
         "offset": [
           390,
           -105
@@ -227,7 +227,7 @@ window.MGL_CONTENT={
   {
     "id": "super-bock",
     "title": "Super Bock",
-    "category": "CONCEPT PROJECT",
+    "category": "PROJETO CONCEPTUAL",
     "image": "assets/portfolio/super-bock-01-hero-concept.webp",
     "concept": true,
     "position": [
@@ -251,7 +251,7 @@ window.MGL_CONTENT={
         "image": "assets/portfolio/super-bock-02-footer-concept-story-1280.webp",
         "imageHeight": 672,
         "tileWidth": 200,
-        "label": "Footer — CONCEPT PROJECT",
+        "label": "Rodapé / PROJETO CONCEPTUAL",
         "offset": [
           130,
           215
@@ -262,7 +262,7 @@ window.MGL_CONTENT={
   {
     "id": "jonaas",
     "title": "Jonaas",
-    "category": "ARTIST WEBSITE",
+    "category": "WEBSITE DE ARTISTA",
     "image": "assets/portfolio/jonaas-01-hero.webp",
     "concept": false,
     "position": [
@@ -297,7 +297,7 @@ window.MGL_CONTENT={
   {
     "image": "assets/portfolio/depra-hero-update-1280.webp",
     "imageHeight": 665,
-    "label": "Hero",
+    "label": "Página inicial",
     "id": "depra",
     "title": "Deprá Barber Club",
     "category": "WEBSITE",
@@ -345,7 +345,7 @@ window.MGL_CONTENT={
       {
         "image": "assets/portfolio/organiza-dashboard-update-1280.webp",
         "imageHeight": 660,
-        "label": "Seu negócio na palma da sua mão",
+        "label": "Painel de gestão",
         "offset": [
           -250,
           5

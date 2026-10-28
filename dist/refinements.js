@@ -16,14 +16,14 @@
    }
    const result=await response.json();
    if(!response.ok||result.ok!==true)throw Error(result.error||'Não foi possível enviar. Tente novamente.');
-   feedback.innerHTML='PEDIDO RECEBIDO. O Arthur entrará em contacto consigo. <a href="'+(window.MGL_CONTENT.whatsappUrl||'#')+'" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;margin-left:6px;display:inline-block">Conversar no WhatsApp ↗</a>';
+   feedback.innerHTML='Mensagem recebida. O Arthur entra em contacto para conhecer o seu projeto. <a href="'+(window.MGL_CONTENT.whatsappUrl||'#')+'" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;margin-left:6px;display:inline-block">Fale com a MGL ↗</a>';
    try{
     if(typeof window.mglTrackLeadSuccess==='function')window.mglTrackLeadSuccess();
     else window.dispatchEvent(new CustomEvent('mgl:lead_success'));
    }catch(_){}
    form.reset();requestId=crypto.randomUUID();
   }catch(error){feedback.textContent=error.name==='TimeoutError'?'A ligação demorou mais do que o esperado. Tente novamente; os seus dados continuam preenchidos.':error.message==='Failed to fetch'?'Não foi possível ligar. Verifique a ligação e tente novamente.':error.message;}
-  finally{busy=false;button.disabled=false;button.innerHTML='VAMOS CONVERSAR <span>↗</span>';}
+  finally{busy=false;button.disabled=false;button.innerHTML='FALE COM A MGL <span>↗</span>';}
  });
  const ig=document.querySelector('#footer-instagram');
  try{const u=new URL(window.MGL_CONTENT.instagramUrl);if(u.protocol==='https:'&&['instagram.com','www.instagram.com'].includes(u.hostname)){ig.href=u.href;ig.target='_blank';ig.rel='noopener noreferrer';ig.removeAttribute('aria-disabled');}}catch{}
