@@ -29,17 +29,17 @@
  #work .work-disclosure{font-size:8px;text-align:left;line-height:1.5;margin-top:15px}
 }
 
-/* Expanded editorial wall. Eleven families, an open center, no repeating grid. */
+/* Responsive editorial wall. Project families remain together on the explorable canvas. */
 @media(min-width:801px){
- #work .gallery-stage{height:calc(100svh - 135px);min-height:780px;max-height:980px;overflow:hidden;touch-action:pan-y}
- #work .gallery-map{inset:auto;left:calc(50% - 1200px);top:calc(50% - 775px);width:2400px;height:1550px}
- #work .gallery-center{left:1200px;top:720px;width:min(700px,49vw)}
- #work .portfolio-group{position:absolute;left:var(--case-x);top:var(--case-y);width:0;height:0}
+ #work .gallery-stage{height:calc(100svh - 160px);min-height:540px;max-height:1180px;margin:20px 0 16px;overflow:clip;touch-action:pan-y}
+ #work .gallery-map{inset:auto;left:calc(50% - var(--desktop-canvas-width,2400px)/2);top:calc(50% - var(--desktop-canvas-height,1550px)/2);width:var(--desktop-canvas-width,2400px);height:var(--desktop-canvas-height,1550px)}
+ #work .gallery-center{left:var(--desktop-title-x,1200px);top:var(--desktop-title-y,720px);width:var(--desktop-title-width,min(700px,49vw))}
+ #work .portfolio-group{position:absolute;left:var(--desktop-case-x,var(--case-x));top:var(--desktop-case-y,var(--case-y));width:var(--desktop-case-width,0px);height:var(--desktop-case-height,0px)}
  #work .portfolio-group-heading{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
  #work .portfolio-track{display:contents}
- #work .project-tile{position:absolute;left:var(--screen-x);top:var(--screen-y);width:var(--screen-width);margin:0;overflow:visible;background:transparent;cursor:default}
+ #work .project-tile{position:absolute;left:var(--desktop-screen-x,var(--screen-x));top:var(--desktop-screen-y,var(--screen-y));width:var(--desktop-screen-width,var(--screen-width));margin:0;overflow:visible;background:transparent;cursor:default}
  #work .project-tile img{display:block;object-fit:contain;filter:none;transform:none}
- #work .tile-caption{inset:100% 0 auto;padding:8px 0 0;background:none;color:var(--ink);font-size:9px!important;line-height:1.4;letter-spacing:.055em;opacity:0;transform:none}
+ #work .tile-caption{inset:100% 0 auto;padding:4px 0 0;background:none;color:var(--ink);font-size:9px!important;line-height:1.4;letter-spacing:.055em;opacity:0;transform:none}
  #work .project-tile:hover,#work .project-tile:focus-visible{box-shadow:none;z-index:6}
  #work .project-tile:hover img,#work .project-tile:focus-visible img{transform:scale(1.02);filter:none}
  #work .project-tile:hover .tile-caption,#work .project-tile:focus-visible .tile-caption{opacity:1;transform:none}

@@ -6,13 +6,14 @@ export default async function handler(req, res) {
   }
 
   // Trusted origins
-  const originHeader = req.headers.origin || 'https://www.mglgrowth.eu';
+  const originHeader = req.headers.origin || 'https://mglgrowth.eu';
   const host = req.headers.host;
   if (req.headers.origin && host) {
     try {
       const originUrl = new URL(req.headers.origin);
       if (
         originUrl.host !== host &&
+        originUrl.hostname !== 'mglgrowth.eu' &&
         !originUrl.hostname.endsWith('.vercel.app') &&
         !originUrl.hostname.endsWith('.mglgrowth.eu') &&
         !originUrl.hostname.includes('localhost') &&

@@ -78,6 +78,9 @@ let gx=0,gy=0,gTargetX=0,gTargetY=0,panFrame=0,inView=false;
 const fine=matchMedia('(hover:hover) and (pointer:fine)'),archiveMedia=matchMedia('(max-width:800px)');
 const bounds=()=>({x:Math.max(0,(map.offsetWidth-stage.clientWidth)/2),y:Math.max(0,(map.offsetHeight-stage.clientHeight)/2)});
 const clamp=(v,max)=>Math.max(-max,Math.min(max,v));
+// The responsive canvas reports geometry changes; reset only its local pan.
+stage.addEventListener('mgl:gallery-layout',()=>{cancelAnimationFrame(panFrame);panFrame=0;gx=gy=gTargetX=gTargetY=0;map.style.transform='';});
+const familyFits=tile=>{if(!stage.classList.contains('is-editorial-gallery'))return true;const r=tile.closest('.portfolio-group').getBoundingClientRect(),s=stage.getBoundingClientRect();return r.left>=s.left&&r.right<=s.right&&r.top>=s.top&&r.bottom<=s.bottom;};
 function pan(){
  gx+=(gTargetX-gx)*.055;gy+=(gTargetY-gy)*.055;
  if(Math.abs(gTargetX-gx)<.08&&Math.abs(gTargetY-gy)<.08){gx=gTargetX;gy=gTargetY;panFrame=0;}else panFrame=requestAnimationFrame(pan);
@@ -89,7 +92,7 @@ stage.addEventListener('pointermove',e=>{
  if(archiveMedia.matches)return;
  if(drag){move(drag.x+e.clientX-drag.clientX,drag.y+e.clientY-drag.clientY);return;}
  if(!fine.matches||reduced)return;
- if(e.target.closest('.project-tile')){move(gx,gy);return;}
+ const hovered=e.target.closest('.project-tile');if(hovered&&familyFits(hovered)){move(gx,gy);return;}
  const r=stage.getBoundingClientRect(),limit=bounds();move((.5-(e.clientX-r.left)/r.width)*2*limit.x,(.5-(e.clientY-r.top)/r.height)*2*limit.y);
 });
 stage.addEventListener('pointerdown',e=>{if(archiveMedia.matches||e.pointerType==='mouse')return;drag={x:gTargetX,y:gTargetY,clientX:e.clientX,clientY:e.clientY};stage.setPointerCapture(e.pointerId);});
@@ -100,8 +103,8 @@ stage.addEventListener('keydown',e=>{if(archiveMedia.matches||!['ArrowLeft','Arr
 $$('#work .project-tile').forEach(tile=>{
  const p=projects.find(p=>p.id===tile.dataset.project);
  const identify=()=>{active.textContent=p.title.toUpperCase()+' / '+p.category;};
- tile.addEventListener('pointerenter',()=>{identify();if(fine.matches&&!drag&&!stage.contains(document.activeElement))move(gx,gy);});
- tile.addEventListener('focus',()=>{identify();if(archiveMedia.matches)return;const r=tile.getBoundingClientRect(),s=stage.getBoundingClientRect();move(gx+s.x+s.width/2-r.x-r.width/2,gy+s.y+s.height/2-r.y-r.height/2);});
+ tile.addEventListener('pointerenter',()=>{identify();if(fine.matches&&!drag&&!stage.contains(document.activeElement)&&familyFits(tile))move(gx,gy);});
+ tile.addEventListener('focus',()=>{identify();if(archiveMedia.matches)return;const target=stage.classList.contains('is-editorial-gallery')?tile.closest('.portfolio-group'):tile;const r=target.getBoundingClientRect(),s=stage.getBoundingClientRect();move(gx+s.x+s.width/2-r.x-r.width/2,gy+s.y+s.height/2-r.y-r.height/2);});
 });
 const observer=new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;if(!inView){cancelAnimationFrame(panFrame);panFrame=0;}else if(!panFrame&&(gx!==gTargetX||gy!==gTargetY))panFrame=requestAnimationFrame(pan);});observer.observe(stage);
 function archiveHint(){move(0,0);if(archiveMedia.matches){cancelAnimationFrame(panFrame);panFrame=0;gx=gy=gTargetX=gTargetY=0;map.style.transform='';}$('.gallery-instruction').textContent=archiveMedia.matches?'Explore os projetos abaixo.':reduced?'Use as teclas de seta para explorar.':'Mova o rato para explorar.';}
