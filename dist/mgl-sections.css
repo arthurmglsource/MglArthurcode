@@ -84,3 +84,34 @@
  .mgl-service-link:is(.is-active,:focus-visible) .mgl-service-body{transform:none}
 }
 @media(prefers-reduced-motion:reduce){.mgl-redesign *,.mgl-redesign *::after{transition:none!important;animation:none!important}.mgl-value-track{display:none}.mgl-value-sequence{padding-left:0}.mgl-service-link .mgl-service-body,.mgl-service-link .mgl-service-arrow{transform:none!important}}
+
+/* Value section only: compact mobile hierarchy; approved desktop remains intact. */
+@media(max-width:1000px){
+ .mgl-value .mgl-section-panel{padding:34px 30px 32px}
+ .mgl-value .mgl-value-heading{max-width:720px}
+ .mgl-value h2{font-size:clamp(36px,5.7vw,54px);line-height:1.06;letter-spacing:-.055em;margin-top:24px}
+ .mgl-value .mgl-value-description{max-width:60ch;font-size:17px;line-height:1.65;margin-top:22px}
+ .mgl-value .mgl-value-sequence{margin-top:32px;padding-top:0;padding-left:16px}
+ .mgl-value .mgl-principles{grid-template-columns:minmax(0,1fr);gap:12px}
+ .mgl-value .mgl-principle{height:auto;min-height:0;padding:20px 22px 22px}
+ .mgl-value .mgl-principle h3{font-size:25px;line-height:1.15;margin:12px 0 10px}
+ .mgl-value .mgl-principle>p{font-size:16px;line-height:1.55;max-width:58ch}
+ .mgl-value .mgl-value-bottom{flex-direction:row;align-items:center;justify-content:center;gap:0;margin-top:28px}
+}
+@media(max-width:600px){
+ .mgl-value{padding:12px 3.2vw}
+ .mgl-value .mgl-section-panel{padding:28px clamp(18px,5vw,24px);border-radius:20px}
+ .mgl-value h2{font-size:clamp(29px,8.2vw,36px);line-height:1.08;letter-spacing:-.05em;margin-top:22px}
+ .mgl-value .mgl-value-description{font-size:clamp(15px,3.85vw,16px);line-height:1.65;margin-top:20px}
+ .mgl-value .mgl-value-sequence{margin-top:28px;padding-left:14px}
+ .mgl-value .mgl-principles{gap:10px}
+ .mgl-value .mgl-principle{padding:18px 16px 20px}
+ .mgl-value .mgl-principle-number{font-size:11px;line-height:1.5}
+ .mgl-value .mgl-principle h3{font-size:23px;line-height:1.15;margin:11px 0 10px}
+ .mgl-value .mgl-principle>p{font-size:15px;line-height:1.55}
+ .mgl-value .mgl-value-bottom{margin-top:26px}
+ :root .mgl-value .mgl-value-cta{width:min(100%,232px);max-width:100%;min-height:54px;justify-content:space-between;gap:24px;padding:16px 24px;font-size:11px}
+}
+@media(max-width:1000px) and (prefers-reduced-motion:reduce){
+ .mgl-value .mgl-value-sequence{padding-left:0}
+}
